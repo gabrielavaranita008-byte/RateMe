@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - RateMe</title>
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-star"></i> RateMe
+            </div>
+            <ul class="nav-menu">
+                <li><a href="home.html" class="nav-link">Home</a></li>
+                <li><a href="reviews.html" class="nav-link">Reviews</a></li>
+                <li><a href="categories.html" class="nav-link">Categories</a></li>
+                <li><a href="profile.html" class="nav-link">Profile</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="profile-container">
+        <div class="profile-header">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop" alt="Profile" class="profile-avatar">
+            <h1 class="profile-name">Marcus Johnson</h1>
+            <p class="profile-username">@marcusjohnson</p>
+            <p style="color: var(--text-light); margin: 10px 0 0 0;">Senior Reviewer | Tech Enthusiast | World Explorer</p>
+            
+            <div class="profile-stats">
+                <div class="profile-stat">
+                    <span class="profile-stat-value">156</span>
+                    <span class="profile-stat-label">Reviews</span>
+                </div>
+                <div class="profile-stat">
+                    <span class="profile-stat-value">2.4K</span>
+                    <span class="profile-stat-label">Followers</span>
+                </div>
+                <div class="profile-stat">
+                    <span class="profile-stat-value">4.8★</span>
+                    <span class="profile-stat-label">Avg Rating</span>
+                </div>
+            </div>
+
+            <button class="edit-profile-btn"><i class="fas fa-edit"></i> Edit Profile</button>
+        </div>
+
+        <div class="profile-content">
+            <div class="profile-section">
+                <h3 class="profile-section-title"><i class="fas fa-trophy"></i> Achievements</h3>
+                <div>
+                    <span class="profile-badge">🏆 Top Reviewer</span>
+                    <span class="profile-badge">⭐ 5-Star Expert</span>
+                    <span class="profile-badge">🎯 Verified Badge</span>
+                    <span class="profile-badge">🔥 Trending Creator</span>
+                    <span class="profile-badge">✨ Gold Member</span>
+                    <span class="profile-badge">🌟 Rising Star</span>
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <h3 class="profile-section-title"><i class="fas fa-info-circle"></i> About Me</h3>
+                <p style="color: var(--text-light); line-height: 1.6;">
+                    Passionate about discovering and sharing the best experiences around the world. I love technology, great food, and unforgettable adventures. When I'm not reviewing, you can find me exploring new places or trying new gadgets.
+                </p>
+            </div>
+        </div>
+
+        <div class="profile-section" id="profile-reviews-section">
+            <h3 class="profile-section-title"><i class="fas fa-star"></i> Recent Reviews</h3>
+            
+            <div class="profile-review">
+                <h4 class="profile-review-title">⭐⭐⭐⭐⭐ Amazing Tech Innovation</h4>
+                <p class="profile-review-text">The new smartphone released today is absolutely incredible. The camera quality, performance, and design are top-notch. I'm genuinely impressed!</p>
+                <div class="profile-review-date">2 days ago</div>
+            </div>
+
+            <div class="profile-review">
+                <h4 class="profile-review-title">⭐⭐⭐⭐⭐ Best Restaurant Experience</h4>
+                <p class="profile-review-text">Visited this amazing restaurant last night. The chef's special dishes were absolutely delicious, and the service was impeccable. Definitely coming back!</p>
+                <div class="profile-review-date">1 week ago</div>
+            </div>
+
+            <div class="profile-review">
+                <h4 class="profile-review-title">⭐⭐⭐⭐⭐ Unforgettable Travel Destination</h4>
+                <p class="profile-review-text">Just returned from the most beautiful travel destination. Crystal clear waters, friendly locals, and breathtaking sunsets. Highly recommended for everyone!</p>
+                <div class="profile-review-date">2 weeks ago</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>RateMe</h4>
+                    <p>The most beautiful rating platform on the internet.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 RateMe. All rights reserved. Made with <span class="heart">❤</span> by Creative Team</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        // Helper functions
+        function createRipple(event, element) {
+            const ripple = document.createElement('span');
+            const rect = element.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = event.clientX - rect.left - size / 2;
+            const y = event.clientY - rect.top - size / 2;
+            
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            ripple.classList.add('ripple');
+            
+            element.appendChild(ripple);
+            
+            setTimeout(() => ripple.remove(), 600);
+        }
+
+        function showNotification(message, duration = 3000) {
+            const toast = document.createElement('div');
+            toast.className = 'notification-toast show';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            gsap.to(toast, {
+                duration: 0.4,
+                opacity: 1,
+            });
+            
+            setTimeout(() => {
+                gsap.to(toast, {
+                    duration: 0.4,
+                    opacity: 0,
+                    onComplete: () => toast.remove()
+                });
+            }, duration);
+        }
+
+        // Page transition
+        document.querySelectorAll('a[href$=".html"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+                if (!href.includes('.html')) return;
+                e.preventDefault();
+                
+                createRipple(e, link);
+                
+                gsap.to('body', {
+                    duration: 0.5,
+                    opacity: 0,
+                    onComplete: () => {
+                        window.location.href = href;
+                    }
+                });
+            });
+        });
+
+        gsap.from('body', {
+            duration: 0.6,
+            opacity: 0,
+            delay: 0.1,
+        });
+
+        // Animate profile header
+        gsap.from('.profile-header', {
+            duration: 0.8,
+            opacity: 0,
+            y: 50,
+            ease: 'power3.out',
+        });
+
+        // Animate avatar
+        gsap.from('.profile-avatar', {
+            duration: 1,
+            opacity: 0,
+            scale: 0,
+            ease: 'back.out',
+            delay: 0.2,
+        });
+
+        // Animate stats
+        document.querySelectorAll('.profile-stat').forEach((stat, index) => {
+            gsap.from(stat, {
+                duration: 0.6,
+                opacity: 0,
+                scale: 0.8,
+                delay: 0.3 + index * 0.1,
+                ease: 'back.out',
+            });
+        });
+
+        // Animate sections
+        gsap.registerPlugin(ScrollTrigger);
+        document.querySelectorAll('.profile-section').forEach((section, index) => {
+            gsap.from(section, {
+                scrollTrigger: {
+                    trigger: section,
+                    start: 'top 80%',
+                    once: true,
+                },
+                duration: 0.6,
+                opacity: 0,
+                x: index % 2 === 0 ? -50 : 50,
+                ease: 'power3.out',
+            });
+        });
+
+        // Animate reviews
+        document.querySelectorAll('.profile-review').forEach((review, index) => {
+            gsap.from(review, {
+                scrollTrigger: {
+                    trigger: review,
+                    start: 'top 90%',
+                    once: true,
+                },
+                duration: 0.5,
+                opacity: 0,
+                x: -30,
+                delay: index * 0.1,
+                ease: 'power3.out',
+            });
+
+            review.addEventListener('mouseenter', () => {
+                gsap.to(review, {
+                    duration: 0.3,
+                    x: 10,
+                    boxShadow: '0 10px 30px rgba(236, 72, 153, 0.2)',
+                });
+            });
+
+            review.addEventListener('mouseleave', () => {
+                gsap.to(review, {
+                    duration: 0.3,
+                    x: 0,
+                    boxShadow: 'none',
+                });
+            });
+
+            review.addEventListener('click', () => {
+                const reviewTitle = review.querySelector('.profile-review-title').textContent;
+                showNotification(`📖 Viewing: ${reviewTitle.substring(0, 30)}...`);
+            });
+        });
+
+        // Edit button animation
+        document.querySelector('.edit-profile-btn').addEventListener('click', function() {
+            createRipple({ clientX: this.offsetWidth / 2, clientY: this.offsetHeight / 2 }, this);
+            
+            gsap.to(this, {
+                duration: 0.2,
+                scale: 0.95,
+                onComplete: () => {
+                    gsap.to(this, {
+                        duration: 0.2,
+                        scale: 1,
+                    });
+                }
+            });
+            
+            showNotification('✏️ Edit Profile mode activated!');
+        });
+
+        // Load user profile data from localStorage
+        function loadUserProfile() {
+            const user = JSON.parse(localStorage.getItem('rateMe_user'));
+            const reviews = JSON.parse(localStorage.getItem('rateMe_reviews') || '[]');
+            
+            if (user) {
+                const userReviews = reviews.filter(review => review.userName === user.name || review.user === user.name);
+                const averageRating = userReviews.length > 0
+                    ? (userReviews.reduce((sum, review) => sum + Number(review.rating || 0), 0) / userReviews.length).toFixed(1)
+                    : '0';
+
+                const header = document.querySelector('.profile-header');
+                if (header) {
+                    header.innerHTML = `
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=${user.name}" alt="Profile" class="profile-avatar">
+                        <h1 class="profile-name">${user.name}</h1>
+                        <p class="profile-username">@${user.name.toLowerCase().replace(/\s/g, '')}</p>
+                        <p style="color: var(--text-light); margin-bottom: 25px;">Joined on ${new Date(user.joinedDate).toLocaleDateString()}</p>
+                        <div class="profile-stats">
+                            <div class="profile-stat">
+                                <span class="profile-stat-value" id="user-review-count">${userReviews.length}</span>
+                                <span class="profile-stat-label">Reviews</span>
+                            </div>
+                            <div class="profile-stat">
+                                <span class="profile-stat-value">${Math.max(userReviews.length * 24, 1)}</span>
+                                <span class="profile-stat-label">Followers</span>
+                            </div>
+                            <div class="profile-stat">
+                                <span class="profile-stat-value">${averageRating}★</span>
+                                <span class="profile-stat-label">Avg Rating</span>
+                            </div>
+                        </div>
+                        <button class="edit-profile-btn" style="margin-top: 25px; padding: 12px 30px; background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%); color: white; border: none; border-radius: 25px; cursor: pointer; font-weight: 600;">Edit Profile</button>
+                    `;
+                }
+                
+                const reviewsSection = document.getElementById('profile-reviews-section');
+                if (reviewsSection) {
+                    let reviewsHTML = '<h3 class="profile-section-title"><i class="fas fa-star"></i> My Reviews</h3>';
+                    
+                    if (userReviews.length > 0) {
+                        userReviews.slice(0, 5).forEach(review => {
+                            const title = review.subject || 'Quick rating';
+                            const body = review.review || 'Saved star rating from the home page.';
+                            reviewsHTML += `
+                                <div class="profile-review" style="padding: 15px; background: rgba(99, 102, 241, 0.05); border-left: 4px solid var(--secondary); border-radius: 8px; margin-bottom: 15px; cursor: pointer;">
+                                    <h4 class="profile-review-title">${'★'.repeat(Number(review.rating || 0))} ${title}</h4>
+                                    <p style="color: var(--text-light); margin: 8px 0; font-size: 0.9rem;">${body.substring(0, 140)}${body.length > 140 ? '...' : ''}</p>
+                                    <small style="color: var(--text-light); opacity: 0.7;">${new Date(review.timestamp).toLocaleDateString()}</small>
+                                </div>
+                            `;
+                        });
+                    } else {
+                        reviewsHTML += `
+                            <div class="profile-review">
+                                <h4 class="profile-review-title">No reviews yet</h4>
+                                <p class="profile-review-text">Your saved reviews will appear here after you submit them from the Home page.</p>
+                            </div>
+                        `;
+                    }
+                    
+                    reviewsSection.innerHTML = reviewsHTML;
+                }
+                
+                // Animate new elements
+                gsap.from('.profile-avatar', {
+                    duration: 1,
+                    opacity: 0,
+                    scale: 0,
+                    ease: 'back.out',
+                });
+                
+                gsap.from('.profile-stat', {
+                    duration: 0.6,
+                    opacity: 0,
+                    scale: 0.8,
+                    stagger: 0.1,
+                    ease: 'back.out',
+                });
+                
+                gsap.from('.profile-review', {
+                    duration: 0.5,
+                    opacity: 0,
+                    x: -30,
+                    stagger: 0.1,
+                    ease: 'power3.out',
+                });
+            } else {
+                // Show login prompt
+                const header = document.querySelector('.profile-header');
+                if (header) {
+                    header.innerHTML = `
+                        <div style="padding: 40px;">
+                            <h2 style="color: var(--text); margin: 20px 0;">👤 Welcome to Your Profile</h2>
+                            <p style="color: var(--text-light); margin-bottom: 25px;">Please login to view and manage your reviews</p>
+                            <button onclick="location.href='index.html'" style="padding: 12px 30px; background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%); color: white; border: none; border-radius: 25px; cursor: pointer; font-weight: 600; font-size: 1rem;">🔐 Go to Login</button>
+                        </div>
+                    `;
+                }
+            }
+        }
+        
+        // Load profile on page load
+        setTimeout(loadUserProfile, 500);
+    </script>
+</body>
+</html>

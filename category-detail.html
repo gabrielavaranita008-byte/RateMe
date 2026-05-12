@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category Detail - RateMe</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">
+                <span>🌟</span>
+                <span>RateMe</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="home.html" class="nav-link">Home</a></li>
+                <li><a href="reviews.html" class="nav-link">Reviews</a></li>
+                <li><a href="categories.html" class="nav-link">Categories</a></li>
+                <li><a href="profile.html" class="nav-link">Profile</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><button id="nav-login-btn" class="nav-link">🔐 Login</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Category Detail Section -->
+    <section class="category-detail-section">
+        <div class="container">
+            <button id="back-btn" class="back-btn">← Back to Categories</button>
+            
+            <div class="category-hero">
+                <div class="category-header">
+                    <div class="category-icon" id="category-icon">🛍️</div>
+                    <div class="category-info">
+                        <h1 id="category-title">Shopping & E-Commerce</h1>
+                        <p id="category-desc">Discover amazing shopping experiences and rate your favorite brands</p>
+                        <div class="category-stats">
+                            <span>📊 4,521 Reviews</span>
+                            <span>⭐ 4.8 Average Rating</span>
+                            <span>👥 12,345 Reviewers</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Content Tabs -->
+            <div class="category-tabs">
+                <button class="tab-btn active" data-tab="top-products">🏆 Top Products</button>
+                <button class="tab-btn" data-tab="recent-reviews">🔥 Recent Reviews</button>
+                <button class="tab-btn" data-tab="guides">📚 Buying Guides</button>
+                <button class="tab-btn" data-tab="trending">📈 Trending</button>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="tab-content">
+                <!-- Top Products -->
+                <div id="top-products" class="tab-pane active">
+                    <div class="products-grid">
+                        <div class="product-card">
+                            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=300&fit=crop" alt="Product">
+                            <h3>Premium Wireless Headphones</h3>
+                            <div class="product-rating">★★★★★ (1,234 reviews)</div>
+                            <p class="product-desc">High-quality sound, wireless connectivity, 30-hour battery life</p>
+                            <div class="product-price">$199.99</div>
+                            <button class="btn-review">View Reviews</button>
+                        </div>
+
+                        <div class="product-card">
+                            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300&h=300&fit=crop" alt="Product">
+                            <h3>Smart Watch Pro</h3>
+                            <div class="product-rating">★★★★☆ (856 reviews)</div>
+                            <p class="product-desc">Fitness tracking, heart rate monitor, long battery life</p>
+                            <div class="product-price">$299.99</div>
+                            <button class="btn-review">View Reviews</button>
+                        </div>
+
+                        <div class="product-card">
+                            <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=300&h=300&fit=crop" alt="Product">
+                            <h3>Portable Camera</h3>
+                            <div class="product-rating">★★★★★ (612 reviews)</div>
+                            <p class="product-desc">4K video, compact design, excellent image quality</p>
+                            <div class="product-price">$449.99</div>
+                            <button class="btn-review">View Reviews</button>
+                        </div>
+
+                        <div class="product-card">
+                            <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=300&h=300&fit=crop" alt="Product">
+                            <h3>Designer Backpack</h3>
+                            <div class="product-rating">★★★★★ (743 reviews)</div>
+                            <p class="product-desc">Waterproof, spacious, comfortable straps, stylish design</p>
+                            <div class="product-price">$129.99</div>
+                            <button class="btn-review">View Reviews</button>
+                        </div>
+
+                        <div class="product-card">
+                            <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=300&h=300&fit=crop" alt="Product">
+                            <h3>Fashion Sunglasses</h3>
+                            <div class="product-rating">★★★★☆ (521 reviews)</div>
+                            <p class="product-desc">UV protection, stylish frames, polarized lenses</p>
+                            <div class="product-price">$89.99</div>
+                            <button class="btn-review">View Reviews</button>
+                        </div>
+
+                        <div class="product-card">
+                            <img src="https://images.unsplash.com/photo-1484704849700-f032a568e944?w=300&h=300&fit=crop" alt="Product">
+                            <h3>Running Shoes</h3>
+                            <div class="product-rating">★★★★★ (934 reviews)</div>
+                            <p class="product-desc">Comfortable fit, excellent support, durable design</p>
+                            <div class="product-price">$119.99</div>
+                            <button class="btn-review">View Reviews</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Reviews -->
+                <div id="recent-reviews" class="tab-pane">
+                    <div class="reviews-list">
+                        <div class="review-item">
+                            <div class="review-avatar">
+                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop" alt="User">
+                            </div>
+                            <div class="review-content">
+                                <h4>Amazing Purchase Experience! 🌟</h4>
+                                <p class="review-author">By Alexandra • 2 days ago</p>
+                                <div class="rating">★★★★★ 5.0</div>
+                                <p class="review-body">Just received my order and I'm absolutely thrilled! The quality exceeded my expectations, shipping was super fast, and customer service was incredibly helpful. Definitely coming back!</p>
+                                <div class="review-footer">
+                                    <button class="btn-helpful">👍 Helpful (234)</button>
+                                    <button class="btn-reply">💬 Reply</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="review-item">
+                            <div class="review-avatar">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop" alt="User">
+                            </div>
+                            <div class="review-content">
+                                <h4>Great Value for Money 💰</h4>
+                                <p class="review-author">By Marcus • 4 days ago</p>
+                                <div class="rating">★★★★☆ 4.0</div>
+                                <p class="review-body">The product quality is excellent and the price is very competitive. Arrived on time and packaging was perfect. Would've given 5 stars but delivery took a couple extra days.</p>
+                                <div class="review-footer">
+                                    <button class="btn-helpful">👍 Helpful (156)</button>
+                                    <button class="btn-reply">💬 Reply</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="review-item">
+                            <div class="review-avatar">
+                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop" alt="User">
+                            </div>
+                            <div class="review-content">
+                                <h4>Best Shopping Platform Ever! 🎉</h4>
+                                <p class="review-author">By Sophia • 1 week ago</p>
+                                <div class="rating">★★★★★ 5.0</div>
+                                <p class="review-body">Everything about this shopping experience was perfect! Wide selection, competitive prices, amazing reviews to help make decisions. The website interface is incredibly user-friendly and intuitive.</p>
+                                <div class="review-footer">
+                                    <button class="btn-helpful">👍 Helpful (432)</button>
+                                    <button class="btn-reply">💬 Reply</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Buying Guides -->
+                <div id="guides" class="tab-pane">
+                    <div class="guides-grid">
+                        <div class="guide-card">
+                            <div class="guide-icon">📱</div>
+                            <h3>How to Choose the Right Gadget</h3>
+                            <p>Learn the key features to look for when selecting tech products that match your needs.</p>
+                            <button class="btn-read">Read Guide →</button>
+                        </div>
+                        <div class="guide-card">
+                            <div class="guide-icon">💳</div>
+                            <h3>Smart Buying & Budgeting Tips</h3>
+                            <p>Master the art of smart shopping and get the best value for your money.</p>
+                            <button class="btn-read">Read Guide →</button>
+                        </div>
+                        <div class="guide-card">
+                            <div class="guide-icon">🚚</div>
+                            <h3>Shipping & Delivery Guide</h3>
+                            <p>Everything you need to know about shipping options and delivery expectations.</p>
+                            <button class="btn-read">Read Guide →</button>
+                        </div>
+                        <div class="guide-card">
+                            <div class="guide-icon">🔄</div>
+                            <h3>Returns & Exchange Policy</h3>
+                            <p>Understand your rights and how to handle returns and exchanges easily.</p>
+                            <button class="btn-read">Read Guide →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trending -->
+                <div id="trending" class="tab-pane">
+                    <div class="trending-items">
+                        <div class="trending-card">
+                            <span class="trend-number">1</span>
+                            <div class="trend-info">
+                                <h3>Smart Home Devices</h3>
+                                <p>📈 +45% searches this week</p>
+                            </div>
+                            <div class="trend-badge">Hot 🔥</div>
+                        </div>
+                        <div class="trending-card">
+                            <span class="trend-number">2</span>
+                            <div class="trend-info">
+                                <h3>Eco-Friendly Products</h3>
+                                <p>📈 +32% searches this week</p>
+                            </div>
+                            <div class="trend-badge">Trending ↑</div>
+                        </div>
+                        <div class="trending-card">
+                            <span class="trend-number">3</span>
+                            <div class="trend-info">
+                                <h3>Fitness Equipment</h3>
+                                <p>📈 +28% searches this week</p>
+                            </div>
+                            <div class="trend-badge">Popular ⭐</div>
+                        </div>
+                        <div class="trending-card">
+                            <span class="trend-number">4</span>
+                            <div class="trend-info">
+                                <h3>Fashion & Accessories</h3>
+                                <p>📈 +19% searches this week</p>
+                            </div>
+                            <div class="trend-badge">Rising ↗️</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="detail-section-block">
+                <h3>Category Insights</h3>
+                <div class="insight-grid" id="category-insights">
+                    <div class="insight-card">
+                        <strong>Most discussed</strong>
+                        <p>Quality, price, trust, delivery speed, and customer support.</p>
+                    </div>
+                    <div class="insight-card">
+                        <strong>Best time to explore</strong>
+                        <p>New reviews are highlighted every week so visitors can compare recent opinions.</p>
+                    </div>
+                    <div class="insight-card">
+                        <strong>Community signal</strong>
+                        <p>Helpful votes, replies, and saved reviews help the best content rise naturally.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="detail-section-block">
+                <h3>Compare Before You Choose</h3>
+                <div class="comparison-grid" id="category-comparison">
+                    <div class="comparison-card">
+                        <strong>Rating trend</strong>
+                        <p>Stable ratings mean the experience is consistent, not just a one-time highlight.</p>
+                    </div>
+                    <div class="comparison-card">
+                        <strong>Reviewer history</strong>
+                        <p>Profiles show how active a reviewer is and what kind of reviews they usually write.</p>
+                    </div>
+                    <div class="comparison-card">
+                        <strong>Freshness</strong>
+                        <p>Recent reviews are prioritized because services and products change over time.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="detail-section-block">
+                <h3>Write a Review in This Category</h3>
+                <form id="category-review-form" class="review-compose">
+                    <input type="text" id="category-review-title" placeholder="What are you reviewing?" required>
+                    <select id="category-review-rating" required>
+                        <option value="">Choose rating</option>
+                        <option value="5">5 stars</option>
+                        <option value="4">4 stars</option>
+                        <option value="3">3 stars</option>
+                        <option value="2">2 stars</option>
+                        <option value="1">1 star</option>
+                    </select>
+                    <textarea id="category-review-text" rows="5" placeholder="Write your honest experience..." required></textarea>
+                    <button type="submit">Publish Review</button>
+                </form>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="category-cta">
+                <h2>Ready to Share Your Experience?</h2>
+                <p>Write your own review and help the community make better decisions!</p>
+                <button class="btn-primary" onclick="openModal('login-modal')">✨ Write a Review</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 RateMe. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('login-modal')">&times;</button>
+            
+            <div id="login-form-container">
+                <h2>🔐 Login / Register</h2>
+                <p>Join RateMe and start sharing your opinions</p>
+                
+                <form onsubmit="return false;">
+                    <div class="form-group">
+                        <label for="user-name">Full Name</label>
+                        <input type="text" id="user-name" placeholder="Enter your name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="user-email">Email</label>
+                        <input type="email" id="user-email" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="user-password">Password</label>
+                        <input type="password" id="user-password" placeholder="Create a password" required>
+                    </div>
+                    
+                    <button type="button" id="login-btn" class="btn-primary" style="width: 100%; margin-top: 15px;">
+                        ✨ Login / Register
+                    </button>
+                </form>
+            </div>
+
+            <div id="logged-in-info" style="display: none; text-align: center;">
+                <h3>✅ Welcome!</h3>
+                <p>You are logged in as:</p>
+                <p style="font-size: 1.2rem; font-weight: bold; color: #6366f1;" id="logged-user-name">User</p>
+                <p style="margin-bottom: 20px;" id="logged-user-email">email@example.com</p>
+                <button id="logout-btn" class="btn-primary">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-overlay"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        // Load UserManager
+        class UserManager {
+            constructor() {
+                this.currentUser = this.loadUser();
+                this.init();
+            }
+            
+            init() {
+                const loginBtn = document.getElementById('nav-login-btn');
+                if (loginBtn) {
+                    loginBtn.addEventListener('click', () => openModal('login-modal'));
+                }
+                
+                const submitLoginBtn = document.getElementById('login-btn');
+                if (submitLoginBtn) {
+                    submitLoginBtn.addEventListener('click', () => this.handleLogin());
+                }
+                
+                const logoutBtn = document.getElementById('logout-btn');
+                if (logoutBtn) {
+                    logoutBtn.addEventListener('click', () => this.logout());
+                }
+                
+                this.updateLoginUI();
+            }
+            
+            handleLogin() {
+                const name = document.getElementById('user-name').value;
+                const email = document.getElementById('user-email').value;
+                const password = document.getElementById('user-password').value;
+                
+                if (!name || !email || !password) {
+                    showNotification('❌ Please fill all fields');
+                    return;
+                }
+                
+                this.currentUser = { name, email, password, joinedDate: new Date().toISOString() };
+                localStorage.setItem('rateMe_user', JSON.stringify(this.currentUser));
+                
+                this.updateLoginUI();
+                showNotification(`✅ Welcome ${name}! You are now logged in!`);
+                
+                setTimeout(() => closeModal('login-modal'), 1500);
+            }
+            
+            logout() {
+                this.currentUser = null;
+                localStorage.removeItem('rateMe_user');
+                this.updateLoginUI();
+                closeModal('login-modal');
+                showNotification('👋 You have been logged out');
+            }
+            
+            updateLoginUI() {
+                const container = document.getElementById('login-form-container');
+                const info = document.getElementById('logged-in-info');
+                const navBtn = document.getElementById('nav-login-btn');
+                
+                if (this.currentUser && container && info) {
+                    container.style.display = 'none';
+                    info.style.display = 'block';
+                    document.getElementById('logged-user-name').textContent = this.currentUser.name;
+                    document.getElementById('logged-user-email').textContent = this.currentUser.email;
+                    
+                    if (navBtn) navBtn.textContent = `👤 ${this.currentUser.name}`;
+                } else if (container && info) {
+                    container.style.display = 'block';
+                    info.style.display = 'none';
+                    if (navBtn) navBtn.textContent = '🔐 Login';
+                }
+            }
+            
+            loadUser() {
+                const user = localStorage.getItem('rateMe_user');
+                return user ? JSON.parse(user) : null;
+            }
+            
+            getCurrentUser() {
+                return this.currentUser;
+            }
+        }
+
+        const userManager = new UserManager();
+
+        const categoryData = {
+            Dining: {
+                icon: '🍽',
+                title: 'Dining',
+                desc: 'Restaurants, cafes, service quality, food photos, and real customer experiences',
+                stats: ['2,450 Reviews', '4.7 Average Rating', '8,420 Reviewers'],
+                products: ['Urban Bistro', 'Coffee Corner', 'Fine Dining Club', 'Street Food Market', 'Vegan Kitchen', 'Dessert Lab']
+            },
+            Shopping: {
+                icon: '🛍',
+                title: 'Shopping',
+                desc: 'Products, stores, brands, delivery, and honest buying experiences',
+                stats: ['3,120 Reviews', '4.8 Average Rating', '12,345 Reviewers'],
+                products: ['Premium Wireless Headphones', 'Smart Watch Pro', 'Portable Camera', 'Designer Backpack', 'Fashion Sunglasses', 'Running Shoes']
+            },
+            Travel: {
+                icon: '✈',
+                title: 'Travel',
+                desc: 'Hotels, destinations, transport, tours, and unforgettable adventures',
+                stats: ['1,890 Reviews', '4.9 Average Rating', '6,780 Reviewers'],
+                products: ['Beach Resort', 'City Hotel', 'Mountain Cabin', 'Guided Tour', 'Flight Experience', 'Travel Backpack']
+            },
+            Technology: {
+                icon: '💻',
+                title: 'Technology',
+                desc: 'Apps, devices, software, gadgets, and tools people actually use',
+                stats: ['4,567 Reviews', '4.6 Average Rating', '15,230 Reviewers'],
+                products: ['Productivity App', 'Smart Speaker', 'Gaming Laptop', 'Design Software', 'Wireless Router', 'AI Notes Tool']
+            },
+            Entertainment: {
+                icon: '🎬',
+                title: 'Entertainment',
+                desc: 'Movies, shows, games, concerts, and places to spend free time',
+                stats: ['2,780 Reviews', '4.5 Average Rating', '9,820 Reviewers'],
+                products: ['Streaming Series', 'Indie Game', 'Cinema Night', 'Live Concert', 'Board Game', 'Podcast Show']
+            },
+            Fitness: {
+                icon: '🏋',
+                title: 'Fitness',
+                desc: 'Gyms, trainers, wellness programs, equipment, and healthy routines',
+                stats: ['1,645 Reviews', '4.7 Average Rating', '5,410 Reviewers'],
+                products: ['Local Gym', 'Yoga Studio', 'Fitness App', 'Running Program', 'Wellness Coach', 'Home Equipment']
+            }
+        };
+
+        function loadCategoryFromSelection() {
+            const params = new URLSearchParams(window.location.search);
+            const rawSelectedName = params.get('category') || localStorage.getItem('rateMe_selectedCategory') || 'Shopping';
+            const selectedName = Object.keys(categoryData).find(name => name.toLowerCase() === rawSelectedName.toLowerCase()) || 'Shopping';
+            const data = categoryData[selectedName] || categoryData.Shopping;
+
+            document.title = `${data.title} - RateMe`;
+            document.getElementById('category-icon').textContent = data.icon;
+            document.getElementById('category-title').textContent = data.title;
+            document.getElementById('category-desc').textContent = data.desc;
+            document.querySelector('.category-stats').innerHTML = data.stats.map(stat => `<span>${stat}</span>`).join('');
+
+            document.querySelectorAll('.product-card').forEach((card, index) => {
+                const name = data.products[index] || data.products[0];
+                card.querySelector('h3').textContent = name;
+                card.querySelector('.product-desc').textContent = `Community picks and detailed ratings for ${name.toLowerCase()} in ${data.title}.`;
+            });
+
+            gsap.from('.category-hero, .category-tabs, .tab-content', {
+                duration: 0.55,
+                opacity: 0,
+                y: 22,
+                stagger: 0.08,
+                ease: 'power2.out'
+            });
+        }
+
+        loadCategoryFromSelection();
+
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            const overlay = document.getElementById('modal-overlay');
+            
+            if (!modal) return;
+            
+            modal.classList.add('active');
+            overlay.classList.add('active');
+            
+            gsap.from(modal, {
+                duration: 0.5,
+                scale: 0,
+                rotateX: -90,
+                rotateY: 0,
+                rotateZ: -45,
+                ease: 'cubic-bezier(0.34, 1.56, 0.64, 1)'
+            });
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            const overlay = document.getElementById('modal-overlay');
+            
+            if (!modal) return;
+            
+            modal.classList.remove('active');
+            overlay.classList.remove('active');
+            
+            gsap.to(modal, {
+                duration: 0.3,
+                scale: 0.8,
+                opacity: 0,
+                onComplete: () => {
+                    modal.style.opacity = '1';
+                }
+            });
+        }
+
+        function showNotification(message, duration = 3000) {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                bottom: 30px;
+                right: 30px;
+                background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+                color: white;
+                padding: 15px 25px;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+                z-index: 10000;
+                font-weight: 500;
+                animation: slideIn 0.3s ease-out;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease-out';
+                setTimeout(() => notification.remove(), 300);
+            }, duration);
+        }
+
+        // Tabs functionality
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+                
+                btn.classList.add('active');
+                const tabId = btn.dataset.tab;
+                const pane = document.getElementById(tabId);
+                if (pane) {
+                    pane.classList.add('active');
+                    
+                    gsap.from(pane, {
+                        duration: 0.4,
+                        opacity: 0,
+                        y: 20
+                    });
+                }
+            });
+        });
+
+        // Back button
+        document.getElementById('back-btn').addEventListener('click', () => {
+            window.location.href = 'categories.html';
+        });
+
+        // Page animation
+        gsap.from('body', {
+            duration: 0.6,
+            opacity: 0,
+            delay: 0.1
+        });
+
+        // Button animations
+        document.querySelectorAll('.btn-review, .btn-read, .btn-helpful, .btn-reply').forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                gsap.to(btn, { duration: 0.2, scale: 1.05 });
+            });
+            btn.addEventListener('mouseleave', () => {
+                gsap.to(btn, { duration: 0.2, scale: 1 });
+            });
+        });
+
+        document.querySelectorAll('.btn-review').forEach(button => {
+            button.addEventListener('click', () => {
+                const card = button.closest('.product-card');
+                const productName = card.querySelector('h3').textContent.trim();
+                const categoryName = document.getElementById('category-title').textContent.trim();
+                localStorage.setItem('rateMe_selectedProduct', productName);
+                localStorage.setItem('rateMe_reviewSearch', categoryName);
+                window.location.href = `reviews.html?search=${encodeURIComponent(categoryName)}`;
+            });
+        });
+
+        document.querySelectorAll('.btn-read').forEach(button => {
+            button.addEventListener('click', () => {
+                const guide = button.closest('.guide-card');
+                const title = guide.querySelector('h3').textContent.trim();
+                const existing = guide.querySelector('.guide-expanded');
+                if (existing) {
+                    gsap.to(existing, {
+                        duration: 0.25,
+                        height: 0,
+                        opacity: 0,
+                        onComplete: () => existing.remove()
+                    });
+                    return;
+                }
+                guide.insertAdjacentHTML('beforeend', `
+                    <div class="guide-expanded" style="overflow:hidden; margin-top:15px; color:var(--text-light); line-height:1.6;">
+                        This guide helps you compare options, check reviews, look at rating history, and avoid weak choices before buying.
+                    </div>
+                `);
+                const panel = guide.querySelector('.guide-expanded');
+                gsap.from(panel, { duration: 0.35, height: 0, opacity: 0, y: -8, ease: 'power2.out' });
+                showNotification(`Opened guide: ${title}`);
+            });
+        });
+
+        document.querySelectorAll('.btn-helpful').forEach(button => {
+            button.addEventListener('click', () => {
+                const current = Number((button.textContent.match(/\d+/) || ['0'])[0]) + 1;
+                button.textContent = `Helpful (${current})`;
+                showNotification('Marked as helpful.');
+            });
+        });
+
+        document.querySelectorAll('.btn-reply').forEach(button => {
+            button.addEventListener('click', () => {
+                const reply = prompt('Write a reply:');
+                if (!reply) return;
+                const replies = JSON.parse(localStorage.getItem('rateMe_replies') || '[]');
+                replies.push({ reply, category: document.getElementById('category-title').textContent, date: new Date().toISOString() });
+                localStorage.setItem('rateMe_replies', JSON.stringify(replies));
+                showNotification('Reply saved.');
+            });
+        });
+
+        const categoryReviewForm = document.getElementById('category-review-form');
+        if (categoryReviewForm) {
+            categoryReviewForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const user = userManager.getCurrentUser();
+                if (!user) {
+                    showNotification('Please login before publishing a review.');
+                    openModal('login-modal');
+                    return;
+                }
+
+                const categoryName = document.getElementById('category-title').textContent.trim();
+                const subject = document.getElementById('category-review-title').value.trim();
+                const rating = Number(document.getElementById('category-review-rating').value);
+                const review = document.getElementById('category-review-text').value.trim();
+                if (!subject || !rating || !review) {
+                    showNotification('Please complete the review form.');
+                    return;
+                }
+
+                const reviews = JSON.parse(localStorage.getItem('rateMe_reviews') || '[]');
+                reviews.push({
+                    subject,
+                    category: categoryName,
+                    rating,
+                    review,
+                    userName: user.name,
+                    userEmail: user.email,
+                    timestamp: new Date().toISOString()
+                });
+                localStorage.setItem('rateMe_reviews', JSON.stringify(reviews));
+                categoryReviewForm.reset();
+                showNotification('Review published and saved to your profile.');
+
+                gsap.fromTo(categoryReviewForm, { scale: 0.98 }, { duration: 0.35, scale: 1, ease: 'back.out' });
+            });
+        }
+
+        // Products grid animation
+        gsap.from('.product-card', {
+            duration: 0.6,
+            opacity: 0,
+            y: 30,
+            stagger: 0.1,
+            delay: 0.3
+        });
+    </script>
+</body>
+</html>

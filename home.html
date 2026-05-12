@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RateMe - Premium Review Platform</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-star"></i> RateMe
+            </div>
+            <ul class="nav-menu">
+                <li><a href="home.html" class="nav-link">Home</a></li>
+                <li><a href="reviews.html" class="nav-link">Reviews</a></li>
+                <li><a href="categories.html" class="nav-link">Categories</a></li>
+                <li><a href="profile.html" class="nav-link">Profile</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><button id="nav-login-btn" class="nav-link" style="background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%); padding: 8px 20px; border-radius: 25px; border: none; cursor: pointer; color: white; font-weight: 600; transition: all 0.3s ease;">🔐 Login</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="stars-bg">
+            <span class="star"></span>
+            <span class="star"></span>
+            <span class="star"></span>
+            <span class="star"></span>
+            <span class="star"></span>
+        </div>
+        
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="word">Lasă</span>
+                <span class="word">un</span>
+                <span class="word">review</span>
+            </h1>
+            <p class="hero-subtitle">Locul unde opiniile prind valoare</p>
+            <button class="cta-button">Start Rating Now</button>
+            <div class="home-search">
+                <input id="home-search-input" type="search" placeholder="Caută recenzii, categorii, funcții...">
+                <div id="home-search-results" class="home-search-results"></div>
+            </div>
+        </div>
+
+        <div class="hero-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose RateMe?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <h3>Recenzii vizuale</h3>
+                    <p>Transformă opiniile în imagini spectaculoase, pline de energie vizuală.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Conținut în trend</h3>
+                    <p>Descoperă cele mai populare recenzii, mereu actuale și captivante.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Recenzii verificate</h3>
+                    <p>Opinii autentice, verificate atent, care inspiră încredere deplină.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Viteză fulger</h3>
+                    <p>Experiență ultra-rapidă, recenzii instant, fără timp pierdut inutil.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3>Calitate premium</h3>
+                    <p>Instrumente premium, design elegant, calitate garantată la fiecare pas.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Comunitatea pe primul loc</h3>
+                    <p>Un spațiu vibrant, unde vocea ta chiar schimbă lucrurile.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="reviews">
+        <div class="container">
+            <h2 class="section-title">Amazing Reviews</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" alt="Reviewer" class="reviewer-avatar">
+                            <div>
+                                <h4>Alexandra</h4>
+                                <p>Product Designer</p>
+                            </div>
+                        </div>
+                        <div class="rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-num">5.0</span>
+                        </div>
+                    </div>
+                    <p class="review-text">"RateMe completely changed how I share my opinions online. The interface is absolutely stunning and the animations are butter smooth!"</p>
+                    <div class="review-image">
+                        <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=300&h=200&fit=crop" alt="Review image">
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" alt="Reviewer" class="reviewer-avatar">
+                            <div>
+                                <h4>Marcus</h4>
+                                <p>Tech Enthusiast</p>
+                            </div>
+                        </div>
+                        <div class="rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-num">5.0</span>
+                        </div>
+                    </div>
+                    <p class="review-text">"This platform is a game-changer! The smoothness of the animations and the modern design is exactly what I was looking for. Absolutely love it!"</p>
+                    <div class="review-image">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=300&h=200&fit=crop" alt="Review image">
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop" alt="Reviewer" class="reviewer-avatar">
+                            <div>
+                                <h4>Sophia</h4>
+                                <p>Content Creator</p>
+                            </div>
+                        </div>
+                        <div class="rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-num">5.0</span>
+                        </div>
+                    </div>
+                    <p class="review-text">"The best rating platform I've ever used. Clean, modern, and incredibly fast. The animations are so smooth they feel almost magical!"</p>
+                    <div class="review-image">
+                        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=300&h=200&fit=crop" alt="Review image">
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop" alt="Reviewer" class="reviewer-avatar">
+                            <div>
+                                <h4>David</h4>
+                                <p>Entrepreneur</p>
+                            </div>
+                        </div>
+                        <div class="rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-num">5.0</span>
+                        </div>
+                    </div>
+                    <p class="review-text">"Outstanding experience! The design philosophy is impeccable. Every detail has been carefully crafted for maximum user satisfaction."</p>
+                    <div class="review-image">
+                        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=300&h=200&fit=crop" alt="Review image">
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <img src="https://images.unsplash.com/photo-1507527173177-efb256e5f86b?w=100&h=100&fit=crop" alt="Reviewer" class="reviewer-avatar">
+                            <div>
+                                <h4>Emily</h4>
+                                <p>Photographer</p>
+                            </div>
+                        </div>
+                        <div class="rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-num">5.0</span>
+                        </div>
+                    </div>
+                    <p class="review-text">"As a visual creator, I absolutely love how RateMe handles images. The platform truly celebrates the art of sharing opinions visually!"</p>
+                    <div class="review-image">
+                        <img src="https://images.unsplash.com/photo-1511379938547-c1f69b13d835?w=300&h=200&fit=crop" alt="Review image">
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <img src="https://images.unsplash.com/photo-1502374038120-c8e4153b63d3?w=100&h=100&fit=crop" alt="Reviewer" class="reviewer-avatar">
+                            <div>
+                                <h4>Jordan</h4>
+                                <p>UI/UX Designer</p>
+                            </div>
+                        </div>
+                        <div class="rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-num">5.0</span>
+                        </div>
+                    </div>
+                    <p class="review-text">"From a design perspective, this is a masterpiece. The attention to detail, the color palette, the typography - everything is perfect!"</p>
+                    <div class="review-image">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&h=200&fit=crop" alt="Review image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stat-item">
+                <h3 class="stat-number">2.5M+</h3>
+                <p>Active Users</p>
+            </div>
+            <div class="stat-item">
+                <h3 class="stat-number">10M+</h3>
+                <p>Reviews Posted</p>
+            </div>
+            <div class="stat-item">
+                <h3 class="stat-number">150+</h3>
+                <p>Countries</p>
+            </div>
+            <div class="stat-item">
+                <h3 class="stat-number">99.9%</h3>
+                <p>Satisfaction Rate</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Share Your Opinion?</h2>
+            <p>Join thousands of happy users on RateMe today</p>
+            <button class="cta-button-large">Get Started Now</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>RateMe</h4>
+                    <p>The most beautiful rating platform on the internet.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 RateMe. All rights reserved. Made with <span class="heart">❤</span> by our Smart Team</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+
+    <!-- Modal Sistema -->
+    <div id="modal-overlay" class="modal-overlay"></div>
+
+    <!-- Login/Register Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>🔐 Login / Register</h2>
+            <form id="login-form" autocomplete="on">
+            <div id="login-form-container">
+                <div class="form-group">
+                    <label>Name:</label>
+                    <input type="text" id="user-name" name="name" placeholder="Enter your name..." autocomplete="name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email:</label>
+                    <input type="email" id="user-email" name="email" placeholder="Enter your email..." autocomplete="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Password:</label>
+                    <input type="password" id="user-password" name="password" placeholder="Create a password..." autocomplete="current-password" required>
+                </div>
+                <button id="login-btn" type="submit" class="modal-btn">Save Login</button>
+                <p style="color: var(--text-light); text-align: center; margin-top: 15px; font-size: 0.9rem;">
+                    Your data is saved on your device 🔒
+                </p>
+            </div>
+            </form>
+            <div id="logged-in-info" style="display: none;">
+                <div class="user-info">
+                    <p><strong>User:</strong> <span id="logged-user-name"></span></p>
+                    <p><strong>Email:</strong> <span id="logged-user-email"></span></p>
+                </div>
+                <button id="logout-btn" style="background: rgba(236, 72, 153, 0.3); border: 2px solid var(--secondary);">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rating Modal -->
+    <div id="rating-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Rate Something Amazing!</h2>
+            <form id="rating-form">
+                <div class="form-group">
+                    <label>What would you like to rate?</label>
+                    <input type="text" placeholder="e.g., Restaurant, Product, Movie..." required>
+                </div>
+                <div class="form-group">
+                    <label>Your Rating</label>
+                    <div class="star-rating">
+                        <span class="star" data-value="1">★</span>
+                        <span class="star" data-value="2">★</span>
+                        <span class="star" data-value="3">★</span>
+                        <span class="star" data-value="4">★</span>
+                        <span class="star" data-value="5">★</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Your Review</label>
+                    <textarea placeholder="Share your experience..." rows="5"></textarea>
+                </div>
+                <button type="submit" class="modal-btn">Submit Review</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content success-modal-content">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Review Published!</h2>
+            <p>Your review has been successfully posted to RateMe!</p>
+            <button class="modal-btn" onclick="closeAllModals()">Great!</button>
+        </div>
+    </div>
+
+    <!-- Subscribe Modal -->
+    <div id="subscribe-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Join Our Community</h2>
+            <p>Get exclusive access to premium reviews and features</p>
+            <form id="subscribe-form">
+                <div class="form-group">
+                    <input type="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Full Name" required>
+                </div>
+                <button type="submit" class="modal-btn">Subscribe Now</button>
+            </form>
+            <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 15px;">No spam, just amazing reviews!</p>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="notification-toast" class="notification-toast"></div>
+</body>
+</html>
