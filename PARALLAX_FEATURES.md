@@ -3,8 +3,6 @@
 ## Overview
 Your RateMe website has been transformed into a **cutting-edge parallax website** with advanced scroll animations, depth effects, and interactive visual experiences. All existing features are preserved while adding stunning visual enhancements!
 
----
-
 ## Parallax Effects Implemented
 
 ### 1. **Hero Section Parallax** 
@@ -67,8 +65,6 @@ Your RateMe website has been transformed into a **cutting-edge parallax website*
 - **Max blur 5px** - blur caps at 5px to prevent overdoing
 - **Smooth transitions** - 0.3s transition duration
 
----
-
 ## Features Preserved & Enhanced
 
 **All original features remain:**
@@ -81,8 +77,6 @@ Your RateMe website has been transformed into a **cutting-edge parallax website*
 - 3D modal animations
 - Toast notifications
 - Responsive design
-
----
 
 ## Interactive Elements
 
@@ -98,7 +92,6 @@ Your RateMe website has been transformed into a **cutting-edge parallax website*
 3. **Once property** - Animations repeat on re-scroll
 4. **Markers hidden** - No debug markers in production
 
----
 
 ## Animation Metrics
 
@@ -111,7 +104,6 @@ Your RateMe website has been transformed into a **cutting-edge parallax website*
 | Title Stretch | Dynamic | none | Scroll linked |
 | Shape Rotation | Dynamic | none | Scroll linked |
 
----
 
 ## Technical Stack
 
@@ -129,8 +121,6 @@ Your RateMe website has been transformed into a **cutting-edge parallax website*
 - Efficient DOM queries with caching
 - GSAP overwrite: 'auto' for conflict prevention
 
----
-
 ## How to Experience the Effects
 
 ### Best Viewing Method
@@ -146,16 +136,12 @@ Your RateMe website has been transformed into a **cutting-edge parallax website*
 - **Stats Section** - Counter animations + scale effects
 - **Categories Section** - Rotation reveals + directional movement
 
----
-
 ## Performance Notes
 
 - **FPS**: Optimized for 60 FPS on modern devices
 - **GPU**: Hardware accelerated transforms
 - **Mobile**: Responsive parallax with reduced effects on small screens
 - **Battery**: Efficient animations don't drain battery excessively
-
----
 
 ## Color Scheme
 
@@ -166,8 +152,6 @@ Tertiary: #8b5cf6 (Purple)
 Dark: #0a0e27 (Navy)
 Light: #f8fafc (Off-white)
 ```
-
----
 
 ## Customization Tips
 
@@ -195,8 +179,6 @@ Update CSS variables:
 --primary: #your-color;
 --secondary: #your-color;
 ```
-
----
 
 ## Summary
 
