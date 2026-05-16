@@ -776,7 +776,6 @@ a{
 }
 
 /* FOOTER */
-
 .footer {
     background: linear-gradient(135deg, var(--dark) 0%, rgba(10, 14, 39, 0.95) 100%);
     color: white;

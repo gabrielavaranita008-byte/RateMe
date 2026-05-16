@@ -3,24 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Review Detail - RateMe</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>RateMe</title>
+    <link rel="stylesheet" href="css/reviews.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="image/star.png">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
-        <div class="nav-content">
-            <div class="logo">
-                <span>🌟</span>
-                <span>RateMe</span>
-            </div>
-            <ul class="nav-links">
+        <div class="nav-container">
+            <a href="home.html"><div class="logo">
+                <i class="fas fa-star"></i> RateMe
+            </div></a>
+            <ul class="nav-menu">
                 <li><a href="home.html" class="nav-link">Home</a></li>
                 <li><a href="reviews.html" class="nav-link">Reviews</a></li>
                 <li><a href="categories.html" class="nav-link">Categories</a></li>
                 <li><a href="profile.html" class="nav-link">Profile</a></li>
                 <li><a href="about.html" class="nav-link">About</a></li>
-                <li><button id="nav-login-btn" class="nav-link">🔐 Login</button></li>
+                <li><button id="nav-login-btn" class="nav-link" style="background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%); padding: 8px 20px; border-radius: 25px; border: none; cursor: pointer; color: white; font-weight: 600; transition: all 0.3s ease;">Login</button></li>
             </ul>
         </div>
     </nav>
@@ -28,7 +29,7 @@
     <!-- Review Detail Section -->
     <section class="review-detail-section">
         <div class="container">
-            <button id="back-btn" class="back-btn">← Back to Reviews</button>
+            <a href="reviews.html"><button id="back-btn" class="back-btn">← Back to Reviews</button></a>
             
             <div class="review-detail-content">
                 <!-- Left Column - Image Gallery -->
@@ -52,7 +53,7 @@
                             <h2 id="reviewer-name">Alexandra</h2>
                             <p class="reviewer-title">Product Designer</p>
                             <p class="reviewer-bio">Passionate about beautiful design and seamless user experiences. Love sharing my thoughts on great products!</p>
-                            <button class="follow-btn">✨ Follow This Reviewer</button>
+                            <button class="follow-btn"> Follow This Reviewer</button>
                         </div>
                     </div>
 
@@ -177,20 +178,13 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <p>&copy; 2026 RateMe. All rights reserved.</p>
-        </div>
-    </footer>
-
     <!-- Login Modal -->
     <div id="login-modal" class="modal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal('login-modal')">&times;</button>
             
             <div id="login-form-container">
-                <h2>🔐 Login / Register</h2>
+                <h2> Login / Register</h2>
                 <p>Join RateMe and start sharing your opinions</p>
                 
                 <form onsubmit="return false;">
@@ -210,13 +204,13 @@
                     </div>
                     
                     <button type="button" id="login-btn" class="btn-primary" style="width: 100%; margin-top: 15px;">
-                        ✨ Login / Register
+                         Login / Register
                     </button>
                 </form>
             </div>
 
             <div id="logged-in-info" style="display: none; text-align: center;">
-                <h3>✅ Welcome!</h3>
+                <h3>Welcome!</h3>
                 <p>You are logged in as:</p>
                 <p style="font-size: 1.2rem; font-weight: bold; color: #6366f1;" id="logged-user-name">User</p>
                 <p style="margin-bottom: 20px;" id="logged-user-email">email@example.com</p>
@@ -227,299 +221,41 @@
 
     <div id="modal-overlay"></div>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>RateMe</h4>
+                    <p>The most beautiful rating platform on the internet.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 RateMe. All rights reserved. Made with <span class="heart">❤</span> by Creative Team</p>
+            </div>
+        </div>
+    </footer>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script>
-        // Load scripts
-        class UserManager {
-            constructor() {
-                this.currentUser = this.loadUser();
-                this.init();
-            }
-            
-            init() {
-                const loginBtn = document.getElementById('nav-login-btn');
-                if (loginBtn) {
-                    loginBtn.addEventListener('click', () => openModal('login-modal'));
-                }
-                
-                const submitLoginBtn = document.getElementById('login-btn');
-                if (submitLoginBtn) {
-                    submitLoginBtn.addEventListener('click', () => this.handleLogin());
-                }
-                
-                const logoutBtn = document.getElementById('logout-btn');
-                if (logoutBtn) {
-                    logoutBtn.addEventListener('click', () => this.logout());
-                }
-                
-                this.updateLoginUI();
-            }
-            
-            handleLogin() {
-                const name = document.getElementById('user-name').value;
-                const email = document.getElementById('user-email').value;
-                const password = document.getElementById('user-password').value;
-                
-                if (!name || !email || !password) {
-                    showNotification('❌ Please fill all fields');
-                    return;
-                }
-                
-                this.currentUser = { name, email, password, joinedDate: new Date().toISOString() };
-                localStorage.setItem('rateMe_user', JSON.stringify(this.currentUser));
-                
-                this.updateLoginUI();
-                showNotification(`✅ Welcome ${name}! You are now logged in!`);
-                
-                gsap.from('.user-info', {
-                    duration: 0.6,
-                    opacity: 0,
-                    scale: 0.8,
-                    ease: 'back.out'
-                });
-                
-                setTimeout(() => closeModal('login-modal'), 1500);
-            }
-            
-            logout() {
-                this.currentUser = null;
-                localStorage.removeItem('rateMe_user');
-                this.updateLoginUI();
-                closeModal('login-modal');
-                showNotification('👋 You have been logged out');
-            }
-            
-            updateLoginUI() {
-                const container = document.getElementById('login-form-container');
-                const info = document.getElementById('logged-in-info');
-                const navBtn = document.getElementById('nav-login-btn');
-                
-                if (this.currentUser && container && info) {
-                    container.style.display = 'none';
-                    info.style.display = 'block';
-                    document.getElementById('logged-user-name').textContent = this.currentUser.name;
-                    document.getElementById('logged-user-email').textContent = this.currentUser.email;
-                    
-                    if (navBtn) navBtn.textContent = `👤 ${this.currentUser.name}`;
-                } else if (container && info) {
-                    container.style.display = 'block';
-                    info.style.display = 'none';
-                    if (navBtn) navBtn.textContent = '🔐 Login';
-                }
-            }
-            
-            loadUser() {
-                const user = localStorage.getItem('rateMe_user');
-                return user ? JSON.parse(user) : null;
-            }
-            
-            getCurrentUser() {
-                return this.currentUser;
-            }
-        }
-
-        const userManager = new UserManager();
-
-        function openModal(modalId) {
-            const modal = document.getElementById(modalId);
-            const overlay = document.getElementById('modal-overlay');
-            
-            if (!modal) return;
-            
-            modal.classList.add('active');
-            overlay.classList.add('active');
-            
-            gsap.from(modal, {
-                duration: 0.5,
-                scale: 0,
-                rotateX: -90,
-                rotateY: 0,
-                rotateZ: -45,
-                ease: 'cubic-bezier(0.34, 1.56, 0.64, 1)'
-            });
-            
-            gsap.to('body', { duration: 0.3, backdropFilter: 'blur(10px)' });
-        }
-
-        function closeModal(modalId) {
-            const modal = document.getElementById(modalId);
-            const overlay = document.getElementById('modal-overlay');
-            
-            if (!modal) return;
-            
-            modal.classList.remove('active');
-            overlay.classList.remove('active');
-            
-            gsap.to(modal, {
-                duration: 0.3,
-                scale: 0.8,
-                opacity: 0,
-                onComplete: () => {
-                    modal.style.opacity = '1';
-                }
-            });
-        }
-
-        function showNotification(message, duration = 3000) {
-            const notification = document.createElement('div');
-            notification.className = 'notification';
-            notification.textContent = message;
-            notification.style.cssText = `
-                position: fixed;
-                bottom: 30px;
-                right: 30px;
-                background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
-                color: white;
-                padding: 15px 25px;
-                border-radius: 10px;
-                box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
-                z-index: 10000;
-                font-weight: 500;
-                animation: slideIn 0.3s ease-out;
-            `;
-            
-            document.body.appendChild(notification);
-            
-            setTimeout(() => {
-                notification.style.animation = 'slideOut 0.3s ease-out';
-                setTimeout(() => notification.remove(), 300);
-            }, duration);
-        }
-
-        // Back button
-        document.getElementById('back-btn').addEventListener('click', () => {
-            window.location.href = 'reviews.html';
-        });
-
-        // Gallery thumbnails
-        document.querySelectorAll('.thumbnail').forEach(thumb => {
-            thumb.addEventListener('click', () => {
-                document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
-                thumb.classList.add('active');
-                
-                const fullSrc = thumb.dataset.full;
-                const mainImg = document.getElementById('main-image');
-                
-                gsap.to(mainImg, {
-                    duration: 0.3,
-                    opacity: 0,
-                    onComplete: () => {
-                        mainImg.src = fullSrc;
-                        gsap.to(mainImg, { duration: 0.3, opacity: 1 });
-                    }
-                });
-            });
-        });
-
-        function loadSelectedReview() {
-            const selected = JSON.parse(localStorage.getItem('rateMe_selectedReview') || 'null');
-            if (!selected) return;
-
-            document.title = `${selected.title} - RateMe`;
-            const reviewerName = document.getElementById('reviewer-name');
-            const reviewerTitle = document.querySelector('.reviewer-title');
-            const reviewerBio = document.querySelector('.reviewer-bio');
-            const largeAvatar = document.querySelector('.large-avatar');
-            const ratingValue = document.querySelector('.rating-value');
-            const reviewDate = document.getElementById('review-date');
-            const fullReviewText = document.getElementById('full-review-text');
-
-            reviewerName.textContent = selected.author;
-            reviewerTitle.textContent = selected.category;
-            reviewerBio.textContent = `Trusted RateMe reviewer sharing honest thoughts about ${selected.category.toLowerCase()}.`;
-            if (selected.avatar) largeAvatar.src = selected.avatar;
-            ratingValue.textContent = `${selected.rating} / 5.0`;
-            reviewDate.textContent = selected.date;
-            fullReviewText.textContent = selected.text;
-
-            const bigStars = document.querySelector('.big-stars');
-            const roundedRating = Math.max(1, Math.round(Number(selected.rating || 5)));
-            bigStars.textContent = '★'.repeat(roundedRating) + '☆'.repeat(5 - roundedRating);
-
-            const relatedTitle = document.querySelector('.related-reviews h3');
-            if (relatedTitle) relatedTitle.textContent = `More ${selected.category} Reviews`;
-
-            gsap.from('.detail-info > *', {
-                duration: 0.5,
-                opacity: 0,
-                y: 18,
-                stagger: 0.08,
-                ease: 'power2.out'
-            });
-        }
-
-        loadSelectedReview();
-
-        // Page transition animations
-        gsap.from('body', {
-            duration: 0.6,
-            opacity: 0,
-            delay: 0.1
-        });
-
-        // Button animations
-        document.querySelectorAll('.follow-btn, .btn-helpful, .btn-comment, .btn-share').forEach(btn => {
-            btn.addEventListener('mouseenter', () => {
-                gsap.to(btn, { duration: 0.2, scale: 1.05 });
-            });
-            btn.addEventListener('mouseleave', () => {
-                gsap.to(btn, { duration: 0.2, scale: 1 });
-            });
-        });
-
-        document.querySelector('.follow-btn').addEventListener('click', function() {
-            const name = document.getElementById('reviewer-name').textContent;
-            const followed = JSON.parse(localStorage.getItem('rateMe_followed') || '[]');
-            if (!followed.includes(name)) followed.push(name);
-            localStorage.setItem('rateMe_followed', JSON.stringify(followed));
-            this.textContent = 'Following';
-            showNotification(`You are now following ${name}.`);
-        });
-
-        document.querySelector('.btn-helpful').addEventListener('click', function() {
-            const current = Number((this.textContent.match(/\d+/) || ['0'])[0]) + 1;
-            this.textContent = `Helpful (${current})`;
-            showNotification('Saved as helpful.');
-        });
-
-        document.querySelector('.btn-comment').addEventListener('click', function() {
-            const comment = prompt('Write a short comment:');
-            if (!comment) return;
-            const comments = JSON.parse(localStorage.getItem('rateMe_comments') || '[]');
-            comments.push({
-                review: document.title.replace(' - RateMe', ''),
-                comment,
-                date: new Date().toISOString()
-            });
-            localStorage.setItem('rateMe_comments', JSON.stringify(comments));
-            showNotification('Comment saved.');
-        });
-
-        document.querySelector('.btn-share').addEventListener('click', async function() {
-            const shareText = document.title;
-            try {
-                if (navigator.share) {
-                    await navigator.share({ title: shareText, url: window.location.href });
-                } else if (navigator.clipboard) {
-                    await navigator.clipboard.writeText(window.location.href);
-                    showNotification('Review link copied.');
-                } else {
-                    showNotification(window.location.href, 5000);
-                }
-            } catch (error) {
-                showNotification('Share was cancelled.');
-            }
-        });
-
-        // Related cards animation
-        gsap.from('.related-card', {
-            duration: 0.6,
-            opacity: 0,
-            y: 30,
-            stagger: 0.1,
-            delay: 0.3
-        });
-    </script>
+    <script src="javascript/reviews.js"></script>
 </body>
 </html>

@@ -3,23 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Reviews - RateMe</title>
+    <title>RateMe</title>
     <link rel="stylesheet" href="css/reviews.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="image/star.png">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">
+            <a href="home.html"><div class="logo">
                 <i class="fas fa-star"></i> RateMe
-            </div>
+            </div></a>
             <ul class="nav-menu">
                 <li><a href="home.html" class="nav-link">Home</a></li>
                 <li><a href="reviews.html" class="nav-link">Reviews</a></li>
                 <li><a href="categories.html" class="nav-link">Categories</a></li>
                 <li><a href="profile.html" class="nav-link">Profile</a></li>
                 <li><a href="about.html" class="nav-link">About</a></li>
+                <li><button id="nav-login-btn" class="nav-link" style="background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%); padding: 8px 20px; border-radius: 25px; border: none; cursor: pointer; color: white; font-weight: 600; transition: all 0.3s ease;">Login</button></li>
             </ul>
         </div>
     </nav>
@@ -208,279 +210,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script>
-        // Helper functions
-        function createRipple(event, element) {
-            const ripple = document.createElement('span');
-            const rect = element.getBoundingClientRect();
-            const size = Math.max(rect.width, rect.height);
-            const x = event.clientX - rect.left - size / 2;
-            const y = event.clientY - rect.top - size / 2;
-            
-            ripple.style.width = ripple.style.height = size + 'px';
-            ripple.style.left = x + 'px';
-            ripple.style.top = y + 'px';
-            ripple.classList.add('ripple');
-            
-            element.appendChild(ripple);
-            
-            setTimeout(() => ripple.remove(), 600);
-        }
-
-        function showNotification(message, duration = 3000) {
-            const toast = document.createElement('div');
-            toast.className = 'notification-toast show';
-            toast.textContent = message;
-            document.body.appendChild(toast);
-            
-            gsap.to(toast, {
-                duration: 0.4,
-                opacity: 1,
-            });
-            
-            setTimeout(() => {
-                gsap.to(toast, {
-                    duration: 0.4,
-                    opacity: 0,
-                    onComplete: () => toast.remove()
-                });
-            }, duration);
-        }
-
-        // Page transition
-        document.querySelectorAll('a[href$=".html"]').forEach(link => {
-            link.addEventListener('click', (e) => {
-                const href = link.getAttribute('href');
-                if (!href.includes('.html')) return;
-                e.preventDefault();
-                
-                // Ripple effect
-                createRipple(e, link);
-                
-                gsap.to('body', {
-                    duration: 0.5,
-                    opacity: 0,
-                    onComplete: () => {
-                        window.location.href = href;
-                    }
-                });
-            });
-        });
-
-        gsap.from('body', {
-            duration: 0.6,
-            opacity: 0,
-            delay: 0.1,
-        });
-
-        const reviewGrid = document.querySelector('.all-reviews-grid');
-        const searchInput = document.getElementById('review-search');
-        const reviewCount = document.getElementById('review-count');
-        const emptyReviews = document.getElementById('empty-reviews');
-        let activeFilter = 'All';
-        let loadedExtraReviews = 0;
-
-        function addSavedUserReviews() {
-            const saved = JSON.parse(localStorage.getItem('rateMe_reviews') || '[]');
-            saved.slice().reverse().forEach(review => {
-                const title = review.subject || 'Saved Review';
-                if ([...document.querySelectorAll('.review-item-title')].some(item => item.textContent.trim() === title)) return;
-
-                const card = document.createElement('div');
-                card.className = 'review-item';
-                card.innerHTML = `
-                    <div class="review-item-header">
-                        <h3 class="review-item-title">${title}</h3>
-                        <p class="review-item-category">${review.category || 'User Review'}</p>
-                    </div>
-                    <div class="review-item-body">
-                        <div class="review-item-rating">
-                            <span class="review-stars">${'★'.repeat(Number(review.rating || 0))}${'☆'.repeat(5 - Number(review.rating || 0))}</span>
-                            <span>${Number(review.rating || 0).toFixed(1)}</span>
-                        </div>
-                        <p class="review-item-text">${review.review || 'Saved rating from RateMe.'}</p>
-                        <div class="review-item-author">
-                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=${encodeURIComponent(review.userName || 'RateMe User')}" alt="Author">
-                            <div>
-                                <strong>${review.userName || 'RateMe User'}</strong>
-                                <small>${review.timestamp ? new Date(review.timestamp).toLocaleDateString() : 'Today'}</small>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                reviewGrid.prepend(card);
-                wireReviewItem(card);
-            });
-        }
-
-        function getReviewData(item) {
-            const title = item.querySelector('.review-item-title')?.textContent.trim() || 'Untitled Review';
-            const category = item.querySelector('.review-item-category')?.textContent.trim() || 'General';
-            const text = item.querySelector('.review-item-text')?.textContent.trim() || '';
-            const author = item.querySelector('.review-item-author strong')?.textContent.trim() || 'RateMe User';
-            const date = item.querySelector('.review-item-author small')?.textContent.trim() || 'Today';
-            const rating = item.querySelector('.review-item-rating span:last-child')?.textContent.trim() || '5.0';
-            const avatar = item.querySelector('.review-item-author img')?.src || '';
-            return { title, category, text, author, date, rating, avatar };
-        }
-
-        function normalize(value) {
-            return value.toLowerCase().trim();
-        }
-
-        function matchesFilter(data) {
-            if (activeFilter === 'All') return true;
-            if (activeFilter === 'Latest') return ['2 days ago', '5 days ago', '1 week ago'].includes(data.date);
-            if (activeFilter === 'Top Rated') return Number(data.rating) >= 4.8;
-            if (activeFilter === 'Most Popular') return ['Technology', 'Shopping', 'Travel & Adventure'].includes(data.category);
-            if (activeFilter === 'This Week') return !data.date.includes('weeks') && !data.date.includes('month');
-            return true;
-        }
-
-        function applyReviewsView() {
-            const query = normalize(searchInput.value);
-            const items = [...document.querySelectorAll('.review-item')];
-            let visibleCount = 0;
-
-            items.forEach(item => {
-                const data = getReviewData(item);
-                const haystack = normalize(`${data.title} ${data.category} ${data.text} ${data.author}`);
-                const isVisible = matchesFilter(data) && (!query || haystack.includes(query));
-
-                if (isVisible) {
-                    item.style.display = '';
-                    visibleCount += 1;
-                    gsap.fromTo(item, { opacity: 0, y: 18 }, { duration: 0.28, opacity: 1, y: 0, ease: 'power2.out' });
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-
-            reviewCount.textContent = `${visibleCount} review${visibleCount === 1 ? '' : 's'} found`;
-            emptyReviews.style.display = visibleCount ? 'none' : 'block';
-        }
-
-        function openReviewDetail(item) {
-            const data = getReviewData(item);
-            localStorage.setItem('rateMe_selectedReview', JSON.stringify(data));
-            gsap.to('body', {
-                duration: 0.35,
-                opacity: 0,
-                onComplete: () => {
-                    window.location.href = `review-detail.html?title=${encodeURIComponent(data.title)}`;
-                }
-            });
-        }
-
-        function wireReviewItem(item) {
-            item.addEventListener('mouseenter', () => {
-                gsap.to(item, { duration: 0.3, y: -10 });
-            });
-
-            item.addEventListener('mouseleave', () => {
-                gsap.to(item, { duration: 0.3, y: 0 });
-            });
-
-            item.addEventListener('click', () => openReviewDetail(item));
-        }
-
-        // Filter buttons
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                activeFilter = this.textContent.trim();
-                gsap.fromTo(this, { scale: 0.94 }, { duration: 0.25, scale: 1, ease: 'back.out' });
-                applyReviewsView();
-            });
-        });
-
-        const params = new URLSearchParams(window.location.search);
-        const initialSearch = params.get('search') || localStorage.getItem('rateMe_reviewSearch') || '';
-        if (initialSearch) {
-            searchInput.value = initialSearch;
-            localStorage.removeItem('rateMe_reviewSearch');
-        }
-
-        searchInput.addEventListener('input', applyReviewsView);
-
-        // Animate review items on load
-        gsap.registerPlugin(ScrollTrigger);
-        document.querySelectorAll('.review-item').forEach((item, index) => {
-            gsap.from(item, {
-                scrollTrigger: {
-                    trigger: item,
-                    start: 'top 80%',
-                    once: true,
-                },
-                duration: 0.6,
-                opacity: 0,
-                y: 40,
-                delay: index * 0.08,
-                ease: 'power3.out',
-            });
-            wireReviewItem(item);
-        });
-
-        // Load more button
-        document.querySelector('.load-more-btn').addEventListener('click', function() {
-            gsap.to(this, {
-                duration: 0.2,
-                scale: 0.90,
-                onComplete: () => {
-                    gsap.to(this, {
-                        duration: 0.3,
-                        scale: 1,
-                    });
-                }
-            });
-            
-            // Create ripple
-            createRipple({ clientX: this.offsetWidth / 2, clientY: this.offsetHeight / 2 }, this);
-            
-            const extraReviews = [
-                ['Hidden Gem Cafe', 'Dining', 'Cozy place, excellent desserts, and a team that pays attention to small details.', 'Nora Miles', 'Today', '4.9'],
-                ['Smart Planner App', 'Technology', 'A clean app that actually helped me organize projects and daily habits.', 'Leo Park', 'Today', '2.5'],
-                ['Weekend Mountain Stay', 'Travel & Adventure', 'Beautiful views, quiet rooms, and very friendly hosts. Worth every minute.', 'Irina Costa', 'Yesterday', '5.0']
-            ];
-
-            extraReviews.forEach((review, index) => {
-                const [title, category, text, author, date, rating] = review;
-                const card = document.createElement('div');
-                card.className = 'review-item';
-                card.innerHTML = `
-                    <div class="review-item-header">
-                        <h3 class="review-item-title">${title}</h3>
-                        <p class="review-item-category">${category}</p>
-                    </div>
-                    <div class="review-item-body">
-                        <div class="review-item-rating">
-                            <span class="review-stars">★★★★★</span>
-                            <span>${rating}</span>
-                        </div>
-                        <p class="review-item-text">${text}</p>
-                        <div class="review-item-author">
-                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=${encodeURIComponent(author)}" alt="Author">
-                            <div>
-                                <strong>${author}</strong>
-                                <small>${date}</small>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                reviewGrid.appendChild(card);
-                wireReviewItem(card);
-                gsap.from(card, { duration: 0.45, opacity: 0, y: 30, delay: index * 0.08, ease: 'power3.out' });
-            });
-
-            loadedExtraReviews += extraReviews.length;
-            this.textContent = 'All Reviews Loaded';
-            this.disabled = true;
-            applyReviewsView();
-        });
-
-        addSavedUserReviews();
-        applyReviewsView();
-    </script>
+    <script src="javascript/reviews.js"></script>
 </body>
 </html>
