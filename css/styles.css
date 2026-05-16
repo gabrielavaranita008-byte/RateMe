@@ -35,6 +35,10 @@ body {
     overflow-x: hidden;
 }
 
+a{
+    text-decoration: none;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -384,7 +388,7 @@ body {
     padding: 100px 0;
     background: linear-gradient(135deg, rgba(11, 13, 28, 0.8) 0%, rgba(10, 14, 39, 0.6) 100%);
 }
-.container {
+.feature .container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 3fr));
     gap: 40px;
@@ -694,6 +698,13 @@ body {
     color: white;
 }
 
+.stats .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 3fr));
+    gap: 40px;
+    text-align: center;
+}
+
 .stat-item h3 {
     font-size: 40px;
     margin-bottom: 10px;
@@ -782,7 +793,7 @@ body {
 
 .footer-section h4 {
     margin-bottom: 15px;
-    font-size: 17px;
+    font-size: 1.1rem;
 }
 
 .footer-section p {
