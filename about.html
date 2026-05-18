@@ -1,25 +1,28 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - RateMe</title>
+    <title>RateMe</title>
     <link rel="stylesheet" href="css/about.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="image/star.png">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">
+            <a href="home.html"><div class="logo">
                 <i class="fas fa-star"></i> RateMe
-            </div>
+            </div></a>
             <ul class="nav-menu">
                 <li><a href="home.html" class="nav-link">Home</a></li>
                 <li><a href="reviews.html" class="nav-link">Reviews</a></li>
                 <li><a href="categories.html" class="nav-link">Categories</a></li>
                 <li><a href="profile.html" class="nav-link">Profile</a></li>
                 <li><a href="about.html" class="nav-link">About</a></li>
+                <li><button id="nav-login-btn" class="nav-link" style="background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%); padding: 8px 20px; border-radius: 25px; border: none; cursor: pointer; color: white; font-weight: 600; transition: all 0.3s ease;">Login</button></li>
             </ul>
         </div>
     </nav>
@@ -164,227 +167,107 @@
         </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script>
-        // Helper functions
-        function createRipple(event, element) {
-            const ripple = document.createElement('span');
-            const rect = element.getBoundingClientRect();
-            const size = Math.max(rect.width, rect.height);
-            const x = event.clientX - rect.left - size / 2;
-            const y = event.clientY - rect.top - size / 2;
-            
-            ripple.style.width = ripple.style.height = size + 'px';
-            ripple.style.left = x + 'px';
-            ripple.style.top = y + 'px';
-            ripple.classList.add('ripple');
-            
-            element.appendChild(ripple);
-            
-            setTimeout(() => ripple.remove(), 600);
-        }
+    <!-- Modal Sistema -->
+    <div id="modal-overlay" class="modal-overlay"></div>
 
-        function showNotification(message, duration = 3000) {
-            const toast = document.createElement('div');
-            toast.className = 'notification-toast show';
-            toast.textContent = message;
-            document.body.appendChild(toast);
-            
-            gsap.to(toast, {
-                duration: 0.4,
-                opacity: 1,
-            });
-            
-            setTimeout(() => {
-                gsap.to(toast, {
-                    duration: 0.4,
-                    opacity: 0,
-                    onComplete: () => toast.remove()
-                });
-            }, duration);
-        }
+    <!-- Login/Register Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <button type="button" class="modal-close">&times;</button>
+            <h2>Login / Register</h2>
+            <form id="login-form" autocomplete="on">
+            <div id="login-form-container">
+                <div class="form-group">
+                    <label>Name:</label>
+                    <input type="text" id="user-name" name="name" placeholder="Enter your name..." autocomplete="name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email:</label>
+                    <input type="email" id="user-email" name="email" placeholder="Enter your email..." autocomplete="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Password:</label>
+                    <input type="password" id="user-password" name="password" placeholder="Create a password..." autocomplete="current-password" required>
+                </div>
+                <button id="login-btn" type="submit" class="modal-btn">Save Login</button>
+                <p style="color: var(--text-light); text-align: center; margin-top: 15px; font-size: 14px;">
+                    Your data is saved on your device 
+                </p>
+            </div>
+            </form>
+            <div id="logged-in-info" style="display: none;">
+                <div class="user-info">
+                    <p><strong>User:</strong> <span id="logged-user-name"></span></p>
+                    <p><strong>Email:</strong> <span id="logged-user-email"></span></p>
+                </div>
+                <button id="logout-btn" style="background: rgba(236, 72, 153, 0.3); border: 2px solid var(--secondary);">Logout</button>
+            </div>
+        </div>
+    </div>
 
-        // Page transition
-        document.querySelectorAll('a[href$=".html"]').forEach(link => {
-            link.addEventListener('click', (e) => {
-                const href = link.getAttribute('href');
-                if (!href.includes('.html')) return;
-                e.preventDefault();
-                
-                createRipple(e, link);
-                
-                gsap.to('body', {
-                    duration: 0.5,
-                    opacity: 0,
-                    onComplete: () => {
-                        window.location.href = href;
-                    }
-                });
-            });
-        });
+    <!-- Rating Modal -->
+    <div id="rating-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Rate Something Amazing!</h2>
+            <form id="rating-form">
+                <div class="form-group">
+                    <label>What would you like to rate?</label>
+                    <input type="text" placeholder="e.g., Restaurant, Product, Movie..." required>
+                </div>
+                <div class="form-group">
+                    <label>Your Rating</label>
+                    <div class="star-rating">
+                        <span class="star" data-value="1">★</span>
+                        <span class="star" data-value="2">★</span>
+                        <span class="star" data-value="3">★</span>
+                        <span class="star" data-value="4">★</span>
+                        <span class="star" data-value="5">★</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Your Review</label>
+                    <textarea placeholder="Share your experience..." rows="5"></textarea>
+                </div>
+                <button type="submit" class="modal-btn">Submit Review</button>
+            </form>
+        </div>
+    </div>
 
-        gsap.from('body', {
-            duration: 0.6,
-            opacity: 0,
-            delay: 0.1,
-        });
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content success-modal-content">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Review Published!</h2>
+            <p>Your review has been successfully posted to RateMe!</p>
+            <button class="modal-btn" onclick="closeAllModals()">Great!</button>
+        </div>
+    </div>
 
-        gsap.registerPlugin(ScrollTrigger);
+    <!-- Subscribe Modal -->
+    <div id="subscribe-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Join Our Community</h2>
+            <p>Get exclusive access to premium reviews and features</p>
+            <form id="subscribe-form">
+                <div class="form-group">
+                    <input type="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Full Name" required>
+                </div>
+                <button type="submit" class="modal-btn">Subscribe Now</button>
+            </form>
+            <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 15px;">No spam, just amazing reviews!</p>
+        </div>
+    </div>
 
-        // Animate hero
-        gsap.from('.about-hero', {
-            duration: 0.8,
-            opacity: 0,
-            y: 30,
-            ease: 'power3.out',
-        });
+    <!-- Notification Toast -->
+    <div id="notification-toast" class="notification-toast"></div>
 
-        // Animate about grid
-        gsap.from('.about-grid', {
-            scrollTrigger: {
-                trigger: '.about-grid',
-                start: 'top 70%',
-                once: true,
-            },
-            duration: 0.8,
-            opacity: 0,
-            x: -50,
-            ease: 'power3.out',
-        });
-
-        gsap.from('.about-image', {
-            scrollTrigger: {
-                trigger: '.about-grid',
-                start: 'top 70%',
-                once: true,
-            },
-            duration: 0.8,
-            opacity: 0,
-            x: 50,
-            delay: 0.2,
-            ease: 'power3.out',
-        });
-
-        // Animate value cards
-        document.querySelectorAll('.value-card').forEach((card, index) => {
-            gsap.from(card, {
-                scrollTrigger: {
-                    trigger: card,
-                    start: 'top 80%',
-                    once: true,
-                },
-                duration: 0.6,
-                opacity: 0,
-                scale: 0.8,
-                delay: index * 0.1,
-                ease: 'back.out',
-            });
-
-            card.addEventListener('mouseenter', () => {
-                gsap.to(card, {
-                    duration: 0.3,
-                    y: -10,
-                    boxShadow: '0 20px 50px rgba(139, 92, 246, 0.3)',
-                });
-
-                gsap.to(card.querySelector('.value-icon'), {
-                    duration: 0.3,
-                    scale: 1.2,
-                    rotation: 10,
-                });
-            });
-
-            card.addEventListener('mouseleave', () => {
-                gsap.to(card, {
-                    duration: 0.3,
-                    y: 0,
-                    boxShadow: 'none',
-                });
-
-                gsap.to(card.querySelector('.value-icon'), {
-                    duration: 0.3,
-                    scale: 1,
-                    rotation: 0,
-                });
-            });
-        });
-
-        // Animate team members
-        document.querySelectorAll('.team-member').forEach((member, index) => {
-            gsap.from(member, {
-                scrollTrigger: {
-                    trigger: member,
-                    start: 'top 80%',
-                    once: true,
-                },
-                duration: 0.6,
-                opacity: 0,
-                y: 50,
-                delay: index * 0.15,
-                ease: 'power3.out',
-            });
-
-            const memberImage = member.querySelector('.team-member-image img');
-            member.addEventListener('mouseenter', () => {
-                gsap.to(member, {
-                    duration: 0.3,
-                    y: -10,
-                    boxShadow: '0 30px 70px rgba(236, 72, 153, 0.3)',
-                });
-
-                if (memberImage) {
-                    gsap.to(memberImage, {
-                        duration: 0.3,
-                        scale: 1.1,
-                    });
-                }
-            });
-
-            member.addEventListener('mouseleave', () => {
-                gsap.to(member, {
-                    duration: 0.3,
-                    y: 0,
-                    boxShadow: '0 0 0 rgba(236, 72, 153, 0)',
-                });
-
-                if (memberImage) {
-                    gsap.to(memberImage, {
-                        duration: 0.3,
-                        scale: 1,
-                    });
-                }
-            });
-
-            member.addEventListener('click', () => {
-                const memberName = member.querySelector('h4').textContent;
-                createRipple({ clientX: member.offsetWidth / 2, clientY: member.offsetHeight / 2 }, member);
-                showNotification(`👋 Meet ${memberName} - Great to connect!`);
-            });
-        });
-
-        // Animate social links
-        document.querySelectorAll('.team-member-socials a, .social-links a').forEach(link => {
-            link.addEventListener('mouseenter', () => {
-                gsap.to(link, {
-                    duration: 0.2,
-                    scale: 1.3,
-                });
-            });
-
-            link.addEventListener('mouseleave', () => {
-                gsap.to(link, {
-                    duration: 0.2,
-                    scale: 1,
-                });
-            });
-
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                createRipple({ clientX: this.offsetWidth / 2, clientY: this.offsetHeight / 2 }, this);
-                showNotification(`🔗 Opening social profile...`);
-            });
-        });
-    </script>
+    <script src="javascript/about.js"></script>
 </body>
 </html>

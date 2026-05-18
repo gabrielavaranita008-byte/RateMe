@@ -193,6 +193,107 @@
         </div>
     </footer>
 
+    <!-- Modal Sistema -->
+    <div id="modal-overlay" class="modal-overlay"></div>
+
+    <!-- Login/Register Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <button type="button" class="modal-close">&times;</button>
+            <h2>Login / Register</h2>
+            <form id="login-form" autocomplete="on">
+            <div id="login-form-container">
+                <div class="form-group">
+                    <label>Name:</label>
+                    <input type="text" id="user-name" name="name" placeholder="Enter your name..." autocomplete="name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email:</label>
+                    <input type="email" id="user-email" name="email" placeholder="Enter your email..." autocomplete="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Password:</label>
+                    <input type="password" id="user-password" name="password" placeholder="Create a password..." autocomplete="current-password" required>
+                </div>
+                <button id="login-btn" type="submit" class="modal-btn">Save Login</button>
+                <p style="color: var(--text-light); text-align: center; margin-top: 15px; font-size: 14px;">
+                    Your data is saved on your device 
+                </p>
+            </div>
+            </form>
+            <div id="logged-in-info" style="display: none;">
+                <div class="user-info">
+                    <p><strong>User:</strong> <span id="logged-user-name"></span></p>
+                    <p><strong>Email:</strong> <span id="logged-user-email"></span></p>
+                </div>
+                <button id="logout-btn" style="background: rgba(236, 72, 153, 0.3); border: 2px solid var(--secondary);">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rating Modal -->
+    <div id="rating-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Rate Something Amazing!</h2>
+            <form id="rating-form">
+                <div class="form-group">
+                    <label>What would you like to rate?</label>
+                    <input type="text" placeholder="e.g., Restaurant, Product, Movie..." required>
+                </div>
+                <div class="form-group">
+                    <label>Your Rating</label>
+                    <div class="star-rating">
+                        <span class="star" data-value="1">★</span>
+                        <span class="star" data-value="2">★</span>
+                        <span class="star" data-value="3">★</span>
+                        <span class="star" data-value="4">★</span>
+                        <span class="star" data-value="5">★</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Your Review</label>
+                    <textarea placeholder="Share your experience..." rows="5"></textarea>
+                </div>
+                <button type="submit" class="modal-btn">Submit Review</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content success-modal-content">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Review Published!</h2>
+            <p>Your review has been successfully posted to RateMe!</p>
+            <button class="modal-btn" onclick="closeAllModals()">Great!</button>
+        </div>
+    </div>
+
+    <!-- Subscribe Modal -->
+    <div id="subscribe-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Join Our Community</h2>
+            <p>Get exclusive access to premium reviews and features</p>
+            <form id="subscribe-form">
+                <div class="form-group">
+                    <input type="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Full Name" required>
+                </div>
+                <button type="submit" class="modal-btn">Subscribe Now</button>
+            </form>
+            <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 15px;">No spam, just amazing reviews!</p>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="notification-toast" class="notification-toast"></div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="javascript/categories.js"></script>
