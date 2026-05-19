@@ -3,379 +3,596 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RateMe</title>
+    <title>RateMe - Food</title>
+
     <link rel="stylesheet" href="css/categorie-detail.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/png" href="image/star.png">
 </head>
+
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="home.html"><div class="logo">
+
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="home.html">
+            <div class="logo">
                 <i class="fas fa-star"></i> RateMe
-            </div></a>
-            <ul class="nav-menu">
-                <li><a href="home.html" class="nav-link">Home</a></li>
-                <li><a href="reviews.html" class="nav-link">Reviews</a></li>
-                <li><a href="categories.html" class="nav-link">Categories</a></li>
-                <li><a href="profile.html" class="nav-link">Profile</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><button id="nav-login-btn" class="nav-link" style="background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%); padding: 8px 20px; border-radius: 25px; border: none; cursor: pointer; color: white; font-weight: 600; transition: all 0.3s ease;">Login</button></li>
-            </ul>
-        </div>
-    </nav>
-
-
-    <!-- Category Detail Section -->
-    <section class="category-detail-section">
-        <div class="container">
-            <a href="categories.html"><button id="back-btn" class="back-btn" type="button">← Back to Categories</button></a>
-            
-            <div class="category-hero">
-                <div class="category-header">
-                    <div class="category-icon" id="category-icon"></div>
-                    <div class="category-info">
-                        <h1 id="category-title">Food</h1>
-                        <p id="category-desc">Discover amazing shopping experiences and rate your favorite brands</p>
-                        <div class="category-stats">
-                            <span>4,521 Reviews</span>
-                            <span>4.8 Average Rating</span>
-                            <span>12,345 Reviewers</span>
-                        </div>
-                    </div>
-                </div>
             </div>
+        </a>
 
-            <!-- Category Content Tabs -->
-            <div class="category-tabs">
-                <button class="tab-btn active" data-tab="top-products">Top Products</button>
-                <button class="tab-btn" data-tab="recent-reviews">Recent Reviews</button>
-                <button class="tab-btn" data-tab="guides">Buying Guides</button>
-                <button class="tab-btn" data-tab="trending">Trending</button>
-            </div>
+        <ul class="nav-menu">
+            <li><a href="home.html" class="nav-link">Home</a></li>
+            <li><a href="reviews.html" class="nav-link">Reviews</a></li>
+            <li><a href="categories.html" class="nav-link">Categories</a></li>
+            <li><a href="profile.html" class="nav-link">Profile</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li>
+                <button id="nav-login-btn" class="login-btn">Login</button>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-            <!-- Tab Content -->
-            <div class="tab-content">
-                <!-- Top Products -->
-                <div id="top-products" class="tab-pane active">
-                    <div class="products-grid">
-                        <div class="product-card">
-                            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=300&fit=crop" alt="Product">
-                            <h3>Premium Wireless Headphones</h3>
-                            <div class="product-rating">★★★★★ (1,234 reviews)</div>
-                            <p class="product-desc">High-quality sound, wireless connectivity, 30-hour battery life</p>
-                            <div class="product-price">$199.99</div>
-                            <button class="btn-review">View Reviews</button>
-                        </div>
+<section class="category-detail-section">
+    <div class="container">
 
-                        <div class="product-card">
-                            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300&h=300&fit=crop" alt="Product">
-                            <h3>Smart Watch Pro</h3>
-                            <div class="product-rating">★★★★☆ (856 reviews)</div>
-                            <p class="product-desc">Fitness tracking, heart rate monitor, long battery life</p>
-                            <div class="product-price">$299.99</div>
-                            <button class="btn-review">View Reviews</button>
-                        </div>
+        <a href="categories.html" class="back-btn">← Back to Categories</a>
 
-                        <div class="product-card">
-                            <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=300&h=300&fit=crop" alt="Product">
-                            <h3>Portable Camera</h3>
-                            <div class="product-rating">★★★★★ (612 reviews)</div>
-                            <p class="product-desc">4K video, compact design, excellent image quality</p>
-                            <div class="product-price">$449.99</div>
-                            <button class="btn-review">View Reviews</button>
-                        </div>
-
-                        <div class="product-card">
-                            <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=300&h=300&fit=crop" alt="Product">
-                            <h3>Designer Backpack</h3>
-                            <div class="product-rating">★★★★★ (743 reviews)</div>
-                            <p class="product-desc">Waterproof, spacious, comfortable straps, stylish design</p>
-                            <div class="product-price">$129.99</div>
-                            <button class="btn-review">View Reviews</button>
-                        </div>
-
-                        <div class="product-card">
-                            <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=300&h=300&fit=crop" alt="Product">
-                            <h3>Fashion Sunglasses</h3>
-                            <div class="product-rating">★★★★☆ (521 reviews)</div>
-                            <p class="product-desc">UV protection, stylish frames, polarized lenses</p>
-                            <div class="product-price">$89.99</div>
-                            <button class="btn-review">View Reviews</button>
-                        </div>
-
-                        <div class="product-card">
-                            <img src="https://images.unsplash.com/photo-1484704849700-f032a568e944?w=300&h=300&fit=crop" alt="Product">
-                            <h3>Running Shoes</h3>
-                            <div class="product-rating">★★★★★ (934 reviews)</div>
-                            <p class="product-desc">Comfortable fit, excellent support, durable design</p>
-                            <div class="product-price">$119.99</div>
-                            <button class="btn-review">View Reviews</button>
-                        </div>
-                    </div>
+        <div class="category-hero">
+            <div class="category-header">
+                <div class="category-icon" id="category-icon">
+                    <i class="fas fa-utensils"></i>
                 </div>
 
-                <!-- Recent Reviews -->
-                <div id="recent-reviews" class="tab-pane">
-                    <div class="reviews-list">
-                        <div class="review-item">
-                            <div class="review-avatar">
-                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop" alt="User">
-                            </div>
-                            <div class="review-content">
-                                <h4>Amazing Purchase Experience!</h4>
-                                <p class="review-author">By Alexandra • 2 days ago</p>
-                                <div class="rating">★★★★★ 5.0</div>
-                                <p class="review-body">Just received my order and I'm absolutely thrilled! The quality exceeded my expectations, shipping was super fast, and customer service was incredibly helpful. Definitely coming back!</p>
-                                <div class="review-footer">
-                                    <button class="btn-helpful">👍 Helpful (234)</button>
-                                    <button class="btn-reply">💬 Reply</button>
-                                </div>
-                            </div>
-                        </div>
+                <div class="category-info">
+                    <h1 id="category-title">Food</h1>
+                    <p id="category-desc">
+                        Discover restaurants, cafes, local places and real dining experiences in Chișinău.
+                    </p>
 
-                        <div class="review-item">
-                            <div class="review-avatar">
-                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop" alt="User">
-                            </div>
-                            <div class="review-content">
-                                <h4>Great Value for Money</h4>
-                                <p class="review-author">By Marcus • 4 days ago</p>
-                                <div class="rating">★★★★☆ 4.0</div>
-                                <p class="review-body">The product quality is excellent and the price is very competitive. Arrived on time and packaging was perfect. Would've given 5 stars but delivery took a couple extra days.</p>
-                                <div class="review-footer">
-                                    <button class="btn-helpful">👍 Helpful (156)</button>
-                                    <button class="btn-reply">💬 Reply</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="review-item">
-                            <div class="review-avatar">
-                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop" alt="User">
-                            </div>
-                            <div class="review-content">
-                                <h4>Best Shopping Platform Ever!</h4>
-                                <p class="review-author">By Sophia • 1 week ago</p>
-                                <div class="rating">★★★★★ 5.0</div>
-                                <p class="review-body">Everything about this shopping experience was perfect! Wide selection, competitive prices, amazing reviews to help make decisions. The website interface is incredibly user-friendly and intuitive.</p>
-                                <div class="review-footer">
-                                    <button class="btn-helpful">👍 Helpful (432)</button>
-                                    <button class="btn-reply">💬 Reply</button>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="category-stats">
+                        <span>4,521 Reviews</span>
+                        <span>4.8 Average Rating</span>
+                        <span>12,345 Reviewers</span>
                     </div>
                 </div>
-
-                <!-- Buying Guides -->
-                <div id="guides" class="tab-pane">
-                    <div class="guides-grid">
-                        <div class="guide-card">
-                            <div class="guide-icon"></div>
-                            <h3>How to Choose the Right Gadget</h3>
-                            <p>Learn the key features to look for when selecting tech products that match your needs.</p>
-                            <button class="btn-read">Read Guide →</button>
-                        </div>
-                        <div class="guide-card">
-                            <div class="guide-icon"></div>
-                            <h3>Smart Buying & Budgeting Tips</h3>
-                            <p>Master the art of smart shopping and get the best value for your money.</p>
-                            <button class="btn-read">Read Guide →</button>
-                        </div>
-                        <div class="guide-card">
-                            <div class="guide-icon"></div>
-                            <h3>Shipping & Delivery Guide</h3>
-                            <p>Everything you need to know about shipping options and delivery expectations.</p>
-                            <button class="btn-read">Read Guide →</button>
-                        </div>
-                        <div class="guide-card">
-                            <div class="guide-icon"></div>
-                            <h3>Returns & Exchange Policy</h3>
-                            <p>Understand your rights and how to handle returns and exchanges easily.</p>
-                            <button class="btn-read">Read Guide →</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Trending -->
-                <div id="trending" class="tab-pane">
-                    <div class="trending-items">
-                        <div class="trending-card">
-                            <span class="trend-number">1</span>
-                            <div class="trend-info">
-                                <h3>Smart Home Devices</h3>
-                                <p>+45% searches this week</p>
-                            </div>
-                            <div class="trend-badge">Hot</div>
-                        </div>
-                        <div class="trending-card">
-                            <span class="trend-number">2</span>
-                            <div class="trend-info">
-                                <h3>Eco-Friendly Products</h3>
-                                <p>+32% searches this week</p>
-                            </div>
-                            <div class="trend-badge">Trending ↑</div>
-                        </div>
-                        <div class="trending-card">
-                            <span class="trend-number">3</span>
-                            <div class="trend-info">
-                                <h3>Fitness Equipment</h3>
-                                <p>+28% searches this week</p>
-                            </div>
-                            <div class="trend-badge">Popular</div>
-                        </div>
-                        <div class="trending-card">
-                            <span class="trend-number">4</span>
-                            <div class="trend-info">
-                                <h3>Fashion & Accessories</h3>
-                                <p>+19% searches this week</p>
-                            </div>
-                            <div class="trend-badge">Rising</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="detail-section-block">
-                <h3>Category Insights</h3>
-                <div class="insight-grid" id="category-insights">
-                    <div class="insight-card">
-                        <strong>Most discussed</strong>
-                        <p>Quality, price, trust, delivery speed, and customer support.</p>
-                    </div>
-                    <div class="insight-card">
-                        <strong>Best time to explore</strong>
-                        <p>New reviews are highlighted every week so visitors can compare recent opinions.</p>
-                    </div>
-                    <div class="insight-card">
-                        <strong>Community signal</strong>
-                        <p>Helpful votes, replies, and saved reviews help the best content rise naturally.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="detail-section-block">
-                <h3>Compare Before You Choose</h3>
-                <div class="comparison-grid" id="category-comparison">
-                    <div class="comparison-card">
-                        <strong>Rating trend</strong>
-                        <p>Stable ratings mean the experience is consistent, not just a one-time highlight.</p>
-                    </div>
-                    <div class="comparison-card">
-                        <strong>Reviewer history</strong>
-                        <p>Profiles show how active a reviewer is and what kind of reviews they usually write.</p>
-                    </div>
-                    <div class="comparison-card">
-                        <strong>Freshness</strong>
-                        <p>Recent reviews are prioritized because services and products change over time.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="detail-section-block">
-                <h3>Write a Review in This Category</h3>
-                <form id="category-review-form" class="review-compose">
-                    <input type="text" id="category-review-title" placeholder="What are you reviewing?" required>
-                    <select id="category-review-rating" required>
-                        <option value="">Choose rating</option>
-                        <option value="5">5 stars</option>
-                        <option value="4">4 stars</option>
-                        <option value="3">3 stars</option>
-                        <option value="2">2 stars</option>
-                        <option value="1">1 star</option>
-                    </select>
-                    <textarea id="category-review-text" rows="5" placeholder="Write your honest experience..." required></textarea>
-                    <button type="submit">Publish Review</button>
-                </form>
-            </div>
-
-            <!-- CTA Section -->
-            <div class="category-cta">
-                <h2>Ready to Share Your Experience?</h2>
-                <p>Write your own review and help the community make better decisions!</p>
-                <button class="btn-primary" onclick="openModal('login-modal')"> Write a Review</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>RateMe</h4>
-                    <p>The most beautiful rating platform on the internet.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Follow Us</h4>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 RateMe. All rights reserved. Made with <span class="heart">❤</span> by Creative Team</p>
             </div>
         </div>
-    </footer>
 
-    <!-- Login Modal -->
+        <div class="category-tabs">
+            <button class="tab-btn active" data-tab="top-products">Top Restaurants</button>
+            <button class="tab-btn" data-tab="recent-reviews">Recent Reviews</button>
+            <button class="tab-btn" data-tab="guides">Dining Guides</button>
+            <button class="tab-btn" data-tab="trending">Trending</button>
+        </div>
+
+        <div class="tab-content">
+
+            <div id="top-products" class="tab-pane active">
+                <div class="products-grid">
+
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=500&h=300&fit=crop" alt="Pegas Terrace" loading="lazy">
+                        <div class="product-info">
+                            <h3>Pegas Terrace & Restaurant</h3>
+                            <div class="product-rating">★★★★★ (5,261 reviews)</div>
+                            <p class="product-desc">Elegant terrace restaurant in Chișinău with European cuisine, premium atmosphere and live evening music.</p>
+                            <button class="btn-review">View Reviews</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=500&h=300&fit=crop" alt="Divus Restaurant" loading="lazy">
+                        <div class="product-info">
+                            <h3>Divus Restaurant</h3>
+                            <div class="product-rating">★★★★★ (4,842 reviews)</div>
+                            <p class="product-desc">Modern fine dining restaurant known for refined international dishes, elegant design and attentive service.</p>
+                            <button class="btn-review">View Reviews</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=500&h=300&fit=crop" alt="Fuior" loading="lazy">
+                        <div class="product-info">
+                            <h3>Fuior</h3>
+                            <div class="product-rating">★★★★★ (4,210 reviews)</div>
+                            <p class="product-desc">Traditional Moldovan cuisine with authentic decor, local wine and warm atmosphere for family dinners.</p>
+                            <button class="btn-review">View Reviews</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&h=300&fit=crop" alt="Black Rabbit Gastro" loading="lazy">
+                        <div class="product-info">
+                            <h3>Black Rabbit Gastro</h3>
+                            <div class="product-rating">★★★★★ (4,990 reviews)</div>
+                            <p class="product-desc">Stylish gastrobar with creative dishes, cocktails and modern urban design for relaxed evenings.</p>
+                            <button class="btn-review">View Reviews</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=500&h=300&fit=crop" alt="Berd's Arome Locale" loading="lazy">
+                        <div class="product-info">
+                            <h3>Berd's Arome Locale</h3>
+                            <div class="product-rating">★★★★★ (4,530 reviews)</div>
+                            <p class="product-desc">Luxury restaurant focused on local ingredients, Moldovan wines and gourmet cuisine.</p>
+                            <button class="btn-review">View Reviews</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=500&h=300&fit=crop" alt="Taifas" loading="lazy">
+                        <div class="product-info">
+                            <h3>Taifas</h3>
+                            <div class="product-rating">★★★★★ (4,120 reviews)</div>
+                            <p class="product-desc">Cozy traditional restaurant serving authentic Moldovan recipes in a rustic local atmosphere.</p>
+                            <button class="btn-review">View Reviews</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=500&h=300&fit=crop" alt="Mi Piace" loading="lazy">
+                        <div class="product-info">
+                            <h3>Mi Piace</h3>
+                            <div class="product-rating">★★★★★ (4,480 reviews)</div>
+                            <p class="product-desc">Italian restaurant popular for handmade pasta, pizza, desserts and romantic dining atmosphere.</p>
+                            <button class="btn-review">View Reviews</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=500&h=300&fit=crop" alt="La Sarkis" loading="lazy">
+                        <div class="product-info">
+                            <h3>La Sarkis</h3>
+                            <div class="product-rating">★★★★★ (4,310 reviews)</div>
+                            <p class="product-desc">Armenian and Middle Eastern restaurant known for grilled dishes, rich spices and generous portions.</p>
+                            <button class="btn-review">View Reviews</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1515669097368-22e68427d265?w=500&h=300&fit=crop" alt="Vatra Neamului" loading="lazy">
+                        <div class="product-info">
+                            <h3>Vatra Neamului</h3>
+                            <div class="product-rating">★★★★★ (4,020 reviews)</div>
+                            <p class="product-desc">Famous traditional restaurant with Moldovan folklore style, homemade dishes and cultural decor.</p>
+                            <button class="btn-review">View Reviews</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=500&h=300&fit=crop" alt="Propaganda Cafe" loading="lazy">
+                        <div class="product-info">
+                            <h3>Propaganda Café</h3>
+                            <div class="product-rating">★★★★★ (4,250 reviews)</div>
+                            <p class="product-desc">Trendy café with artistic interior, quality coffee, modern European menu and creative vibe.</p>
+                            <button class="btn-review">View Reviews</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=500&h=300&fit=crop" alt="Carne Grill" loading="lazy">
+                        <div class="product-info">
+                            <h3>Carne Grill & Wine</h3>
+                            <div class="product-rating">★★★★★ (4,610 reviews)</div>
+                            <p class="product-desc">Premium steakhouse with aged meat selection, wine pairing and elegant interior.</p>
+                            <button class="btn-review">View Reviews</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1555992336-03a23c7b20ee?w=500&h=300&fit=crop" alt="Smokehouse" loading="lazy">
+                        <div class="product-info">
+                            <h3>Smokehouse</h3>
+                            <div class="product-rating">★★★★★ (4,450 reviews)</div>
+                            <p class="product-desc">American-style restaurant famous for burgers, ribs, smoked BBQ dishes and casual atmosphere.</p>
+                            <button class="btn-review">View Reviews</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=300&fit=crop" alt="Andy's Pizza" loading="lazy">
+                        <div class="product-info">
+                            <h3>Andy's Pizza</h3>
+                            <div class="product-rating">★★★★★ (5,842 reviews)</div>
+                            <p class="product-desc">Popular restaurant chain known for pizza, pasta, salads and family-friendly atmosphere.</p>
+                            <button class="btn-review">View Reviews</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=500&h=300&fit=crop" alt="Oliva Verde" loading="lazy">
+                        <div class="product-info">
+                            <h3>Oliva Verde</h3>
+                            <div class="product-rating">★★★★★ (4,650 reviews)</div>
+                            <p class="product-desc">Mediterranean restaurant with seafood, Italian dishes and elegant terrace atmosphere.</p>
+                            <button class="btn-review">View Reviews</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=500&h=300&fit=crop" alt="Kiku Steak & Wine" loading="lazy">
+                        <div class="product-info">
+                            <h3>Kiku Steak & Wine</h3>
+                            <div class="product-rating">★★★★★ (4,720 reviews)</div>
+                            <p class="product-desc">Premium steakhouse offering high-quality meat dishes, wine pairing and luxury interior design.</p>
+                            <button class="btn-review">View Reviews</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=500&h=300&fit=crop" alt="Madam Wong" loading="lazy">
+                        <div class="product-info">
+                            <h3>Madam Wong</h3>
+                            <div class="product-rating">★★★★★ (4,540 reviews)</div>
+                            <p class="product-desc">Asian fusion restaurant with sushi, noodles, cocktails and modern urban atmosphere.</p>
+                            <button class="btn-review">View Reviews</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=500&h=300&fit=crop" alt="Brooklyn Steakhouse" loading="lazy">
+                        <div class="product-info">
+                            <h3>Brooklyn Steakhouse</h3>
+                            <div class="product-rating">★★★★★ (4,410 reviews)</div>
+                            <p class="product-desc">American-style steakhouse with burgers, grilled meat and premium lounge atmosphere.</p>
+                            <button class="btn-review">View Reviews</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=500&h=300&fit=crop" alt="La Plăcinte" loading="lazy">
+                        <div class="product-info">
+                            <h3>La Plăcinte</h3>
+                            <div class="product-rating">★★★★★ (6,120 reviews)</div>
+                            <p class="product-desc">Traditional Moldovan restaurant chain famous for plăcinte, soups and local dishes.</p>
+                            <button class="btn-review">View Reviews</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=500&h=300&fit=crop" alt="Tucano Coffee" loading="lazy">
+                        <div class="product-info">
+                            <h3>Tucano Coffee</h3>
+                            <div class="product-rating">★★★★★ (5,330 reviews)</div>
+                            <p class="product-desc">Trendy coffee shop chain with specialty coffee, desserts and creative tropical design.</p>
+                            <button class="btn-review">View Reviews</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=500&h=300&fit=crop" alt="Draft Arena" loading="lazy">
+                        <div class="product-info">
+                            <h3>Draft Arena</h3>
+                            <div class="product-rating">★★★★★ (4,280 reviews)</div>
+                            <p class="product-desc">Popular sports pub with live matches, burgers, beer selection and energetic atmosphere.</p>
+                            <button class="btn-review">View Reviews</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=500&h=300&fit=crop" alt="Beef House" loading="lazy">
+                        <div class="product-info">
+                            <h3>Beef House</h3>
+                            <div class="product-rating">★★★★★ (4,490 reviews)</div>
+                            <p class="product-desc">Restaurant specialized in premium beef steaks, grilled dishes and elegant interior.</p>
+                            <button class="btn-review">View Reviews</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1555992336-03a23c7b20ee?w=500&h=300&fit=crop" alt="Osho Bar" loading="lazy">
+                        <div class="product-info">
+                            <h3>Osho Bar & Kitchen</h3>
+                            <div class="product-rating">★★★★★ (4,760 reviews)</div>
+                            <p class="product-desc">Contemporary restaurant with signature cocktails, steak dishes and modern nightlife vibe.</p>
+                            <button class="btn-review">View Reviews</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1515669097368-22e68427d265?w=500&h=300&fit=crop" alt="Jeraffe" loading="lazy">
+                        <div class="product-info">
+                            <h3>Jeraffe</h3>
+                            <div class="product-rating">★★★★★ (4,320 reviews)</div>
+                            <p class="product-desc">Panoramic restaurant and lounge with modern cuisine, cocktails and luxury atmosphere.</p>
+                            <button class="btn-review">View Reviews</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=500&h=300&fit=crop" alt="Crème de la Crème" loading="lazy">
+                        <div class="product-info">
+                            <h3>Crème de la Crème</h3>
+                            <div class="product-rating">★★★★★ (4,380 reviews)</div>
+                            <p class="product-desc">Elegant dessert café with artisan cakes, premium coffee and stylish atmosphere.</p>
+                            <button class="btn-review">View Reviews</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&h=300&fit=crop" alt="Trattoria Della Nonna" loading="lazy">
+                        <div class="product-info">
+                            <h3>Trattoria Della Nonna</h3>
+                            <div class="product-rating">★★★★★ (4,570 reviews)</div>
+                            <p class="product-desc">Authentic Italian restaurant with homemade pasta, pizza and Mediterranean atmosphere.</p>
+                            <button class="btn-review">View Reviews</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=500&h=300&fit=crop" alt="Marcu's Coffee" loading="lazy">
+                        <div class="product-info">
+                            <h3>Marcu's Coffee</h3>
+                            <div class="product-rating">★★★★★ (4,150 reviews)</div>
+                            <p class="product-desc">Cozy café known for specialty coffee, desserts and relaxing modern interior.</p>
+                            <button class="btn-review">View Reviews</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=500&h=300&fit=crop" alt="Gastrobar" loading="lazy">
+                        <div class="product-info">
+                            <h3>Gastrobar</h3>
+                            <div class="product-rating">★★★★★ (4,356 reviews)</div>
+                            <p class="product-desc">City center restaurant with burgers, steaks, drinks and vibrant evening atmosphere.</p>
+                            <button class="btn-review">View Reviews</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="load-more-container">
+                    <button id="load-more-btn" class="load-more-btn">Show More</button>
+                </div>
+            </div>
+
+            <div id="recent-reviews" class="tab-pane">
+                <div class="reviews-list">
+                    <div class="review-item">
+                        <div class="review-avatar">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop" alt="User">
+                        </div>
+                        <div class="review-content">
+                            <h4>Amazing Dining Experience!</h4>
+                            <p class="review-author">By Alexandra • 2 days ago</p>
+                            <div class="rating">★★★★★ 5.0</div>
+                            <p class="review-body">The food, service and atmosphere were excellent. A great place for dinner in Chișinău.</p>
+                            <div class="review-footer">
+                                <button class="btn-helpful">👍 Helpful (234)</button>
+                                <button class="btn-reply">💬 Reply</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="guides" class="tab-pane">
+                <div class="guides-grid">
+                    <div class="guide-card">
+                        <h3>How to Choose a Good Restaurant</h3>
+                        <p>Check recent reviews, menu quality, atmosphere, location and service before choosing.</p>
+                        <button class="btn-read">Read Guide →</button>
+                    </div>
+
+                    <div class="guide-card">
+                        <h3>Best Places for Dinner</h3>
+                        <p>Compare restaurants by cuisine type, rating, popularity and real customer experiences.</p>
+                        <button class="btn-read">Read Guide →</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="trending" class="tab-pane">
+                <div class="trending-items">
+                    <div class="trending-card">
+                        <span class="trend-number">1</span>
+                        <div class="trend-info">
+                            <h3>Fine Dining</h3>
+                            <p>+45% searches this week</p>
+                        </div>
+                        <div class="trend-badge">Hot</div>
+                    </div>
+
+                    <div class="trending-card">
+                        <span class="trend-number">2</span>
+                        <div class="trend-info">
+                            <h3>Traditional Moldovan Cuisine</h3>
+                            <p>+32% searches this week</p>
+                        </div>
+                        <div class="trend-badge">Trending</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="detail-section-block">
+            <h3>Category Insights</h3>
+            <div class="insight-grid">
+                <div class="insight-card">
+                    <strong>Most discussed</strong>
+                    <p>Food quality, service speed, atmosphere, menu variety and customer experience.</p>
+                </div>
+
+                <div class="insight-card">
+                    <strong>Best time to explore</strong>
+                    <p>Recent reviews help visitors compare current service and menu quality.</p>
+                </div>
+
+                <div class="insight-card">
+                    <strong>Community signal</strong>
+                    <p>Helpful votes and replies highlight the most useful restaurant reviews.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-section-block">
+            <h3>Write a Review in This Category</h3>
+
+            <form id="category-review-form" class="review-compose">
+                <input type="text" id="category-review-title" placeholder="What restaurant are you reviewing?" required>
+
+                <select id="category-review-rating" required>
+                    <option value="">Choose rating</option>
+                    <option value="5">5 stars</option>
+                    <option value="4">4 stars</option>
+                    <option value="3">3 stars</option>
+                    <option value="2">2 stars</option>
+                    <option value="1">1 star</option>
+                </select>
+
+                <textarea id="category-review-text" rows="5" placeholder="Write your honest experience..." required></textarea>
+
+                <button type="submit">Publish Review</button>
+            </form>
+        </div>
+
+        <div class="category-cta">
+            <h2>Ready to Share Your Experience?</h2>
+            <p>Write your own review and help the community make better decisions!</p>
+            <button class="btn-primary" onclick="openModal('login-modal')">Write a Review</button>
+        </div>
+
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>RateMe</h4>
+                <p>The most beautiful rating platform on the internet.</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="profile.html">Privacy Policy</a></li>
+                    <li><a href="profile.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 RateMe. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+<!-- Modal Sistema -->
+    <div id="modal-overlay" class="modal-overlay"></div>
+
+    <!-- Login/Register Modal -->
     <div id="login-modal" class="modal">
         <div class="modal-content">
-            <button class="close-btn" onclick="closeModal('login-modal')">&times;</button>
-            
+            <span class="modal-close">&times;</span>
+            <h2>Login / Register</h2>
+            <form id="login-form" autocomplete="on">
             <div id="login-form-container">
-                <h2>Login / Register</h2>
-                <p>Join RateMe and start sharing your opinions</p>
-                
-                <form onsubmit="return false;">
-                    <div class="form-group">
-                        <label for="user-name">Full Name</label>
-                        <input type="text" id="user-name" placeholder="Enter your name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="user-email">Email</label>
-                        <input type="email" id="user-email" placeholder="Enter your email" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="user-password">Password</label>
-                        <input type="password" id="user-password" placeholder="Create a password" required>
-                    </div>
-                    
-                    <button type="button" id="login-btn" class="btn-primary" style="width: 100%; margin-top: 15px;">
-                        Login / Register
-                    </button>
-                </form>
+                <div class="form-group">
+                    <label>Name:</label>
+                    <input type="text" id="user-name" name="name" placeholder="Enter your name..." autocomplete="name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email:</label>
+                    <input type="email" id="user-email" name="email" placeholder="Enter your email..." autocomplete="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Password:</label>
+                    <input type="password" id="user-password" name="password" placeholder="Create a password..." autocomplete="current-password" required>
+                </div>
+                <button id="login-btn" type="submit" class="modal-btn">Save Login</button>
+                <p style="color: var(--text-light); text-align: center; margin-top: 15px; font-size: 14px;">
+                    Your data is saved on your device 
+                </p>
             </div>
-
-            <div id="logged-in-info" style="display: none; text-align: center;">
-                <h3>Welcome!</h3>
-                <p>You are logged in as:</p>
-                <p style="font-size: 1.2rem; font-weight: bold; color: #6366f1;" id="logged-user-name">User</p>
-                <p style="margin-bottom: 20px;" id="logged-user-email">email@example.com</p>
-                <button id="logout-btn" class="btn-primary">Logout</button>
+            </form>
+            <div id="logged-in-info" style="display: none;">
+                <div class="user-info">
+                    <p><strong>User:</strong> <span id="logged-user-name"></span></p>
+                    <p><strong>Email:</strong> <span id="logged-user-email"></span></p>
+                </div>
+                <button id="logout-btn" style="background: rgba(236, 72, 153, 0.3); border: 2px solid var(--secondary);">Logout</button>
             </div>
         </div>
     </div>
 
-    <div id="modal-overlay"></div>
+    <!-- Rating Modal -->
+    <div id="rating-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Rate Something Amazing!</h2>
+            <form id="rating-form">
+                <div class="form-group">
+                    <label>What would you like to rate?</label>
+                    <input type="text" placeholder="e.g., Restaurant, Product, Movie..." required>
+                </div>
+                <div class="form-group">
+                    <label>Your Rating</label>
+                    <div class="star-rating">
+                        <span class="star" data-value="1">★</span>
+                        <span class="star" data-value="2">★</span>
+                        <span class="star" data-value="3">★</span>
+                        <span class="star" data-value="4">★</span>
+                        <span class="star" data-value="5">★</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Your Review</label>
+                    <textarea placeholder="Share your experience..." rows="5"></textarea>
+                </div>
+                <button type="submit" class="modal-btn">Submit Review</button>
+            </form>
+        </div>
+    </div>
 
-    <script src="javascript/categories.js"></script>
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content success-modal-content">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Review Published!</h2>
+            <p>Your review has been successfully posted to RateMe!</p>
+            <button class="modal-btn" onclick="closeAllModals()">Great!</button>
+        </div>
+    </div>
+
+    <!-- Subscribe Modal -->
+    <div id="subscribe-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Join Our Community</h2>
+            <p>Get exclusive access to premium reviews and features</p>
+            <form id="subscribe-form">
+                <div class="form-group">
+                    <input type="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Full Name" required>
+                </div>
+                <button type="submit" class="modal-btn">Subscribe Now</button>
+            </form>
+            <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 15px;">No spam, just amazing reviews!</p>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="notification-toast" class="notification-toast"></div>
+
+<script src="javascript/categorie-detail.js"></script>
 </body>
 </html>
