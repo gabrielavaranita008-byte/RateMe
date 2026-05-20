@@ -1,15 +1,20 @@
+const SHEET_URL =
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vQ-4i625FxZ-XIlllAOlxdDgVtNwdHqhd46e_xLgUrcIlPrMuBTj4AlL5uiFy9c2rl18slDRBl3RRx7/pub?gid=0&single=true&output=csv";
+
+let googleReviews = [];
+let visibleReviews = 6;
+let activeFilter = "All";
+
 document.addEventListener("DOMContentLoaded", () => {
     initModals();
     initUserAuth();
     initReviewsSearch();
     initFilterButtons();
-    initReviewCards();
     initLoadMore();
-    addSavedUserReviews();
-    updateReviewCount();
+    loadGoogleReviews();
 });
 
-// MODAL SYSTEM
+/* MODALS */
 
 function openModal(modalId) {
     const modal = document.getElementById(modalId);
@@ -49,7 +54,7 @@ function initModals() {
     });
 }
 
-// USER AUTH
+/* USER AUTH */
 
 function initUserAuth() {
     const loginForm = document.getElementById("login-form");
@@ -118,7 +123,7 @@ function updateLoginUI() {
         if (loggedInfo) loggedInfo.style.display = "block";
         if (loggedName) loggedName.textContent = user.name;
         if (loggedEmail) loggedEmail.textContent = user.email;
-        if (navLoginBtn) navLoginBtn.textContent = `👤 ${user.name}`;
+        if (navLoginBtn) navLoginBtn.textContent = user.name;
     } else {
         if (loginContainer) loginContainer.style.display = "block";
         if (loggedInfo) loggedInfo.style.display = "none";
@@ -126,40 +131,120 @@ function updateLoginUI() {
     }
 }
 
-// REVIEWS SEARCH + FILTER
+/* LOAD GOOGLE SHEETS REVIEWS */
 
-let activeFilter = "All";
+async function loadGoogleReviews() {
+    try {
+        const response = await fetch(SHEET_URL);
 
-function getReviewItems() {
-    return Array.from(document.querySelectorAll(".review-item"));
+        if (!response.ok) {
+            throw new Error("Google Sheets link is not accessible.");
+        }
+
+        const csv = await response.text();
+        const rows = parseCSV(csv);
+
+        googleReviews = [];
+
+        rows.slice(1).forEach(cols => {
+            const restaurant = {
+                name: cleanText(cols[1]),
+                rating: cleanText(cols[4]),
+                reviewsCount: cleanText(cols[5]),
+                address: cleanText(cols[6]),
+                reviews: [
+                    cleanText(cols[7]),
+                    cleanText(cols[8]),
+                    cleanText(cols[9])
+                ]
+            };
+
+            restaurant.reviews.forEach((review, index) => {
+                if (!review) return;
+
+                googleReviews.push({
+                    title: restaurant.name,
+                    category: "Dining",
+                    text: review,
+                    author: getReviewAuthor(index),
+                    date: "Recent review",
+                    rating: restaurant.rating || "5.0",
+                    reviewsCount: restaurant.reviewsCount || "0",
+                    address: restaurant.address,
+                    avatar: getReviewAvatar(index)
+                });
+            });
+        });
+
+        visibleReviews = 6;
+        renderGoogleReviews();
+
+    } catch (error) {
+        console.error("Google Sheets error:", error);
+        showNotification("Could not load Google reviews.");
+    }
 }
 
-function getReviewData(item) {
-    return {
-        title: item.querySelector(".review-item-title")?.textContent.trim() || "",
-        category: item.querySelector(".review-item-category")?.textContent.trim() || "",
-        text: item.querySelector(".review-item-text")?.textContent.trim() || "",
-        author: item.querySelector(".review-item-author strong")?.textContent.trim() || "",
-        date: item.querySelector(".review-item-author small")?.textContent.trim() || "",
-        rating: item.querySelector(".review-item-rating span:last-child")?.textContent.trim() || "0"
-    };
+/* RENDER REVIEWS */
+
+function renderGoogleReviews() {
+    const grid = document.querySelector(".all-reviews-grid");
+
+    if (!grid) return;
+
+    grid.innerHTML = "";
+
+    const filteredReviews = getFilteredReviews();
+
+    filteredReviews.slice(0, visibleReviews).forEach(review => {
+        const card = document.createElement("div");
+        card.className = "review-card";
+
+        card.innerHTML = `
+            <div class="review-card-header">
+                <img src="${review.avatar}" alt="Author" class="review-card-avatar">
+
+                <div>
+                    <h3>${getReviewTitleByAuthor(review.author)}</h3>
+                    <p class="review-card-author">By Google User • Recent review</p>
+                    <div class="review-card-rating">
+                        ${createStars(review.rating)} <span>${review.rating}</span>
+                    </div>
+                </div>
+            </div>
+
+            <p class="review-card-text">${review.text}</p>
+
+            <div class="review-card-actions">
+                <button onclick="markHelpful(event, this)">👍 Helpful <span>0</span></button>
+                <button onclick="replyToReview(event)">💬 Reply</button>
+            </div>
+        `;
+
+        card.addEventListener("click", () => {
+            localStorage.setItem("rateMe_selectedReview", JSON.stringify(review));
+            window.location.href = `review-detail.html?title=${encodeURIComponent(review.title)}`;
+        });
+
+        grid.appendChild(card);
+    });
+
+    updateReviewCount(Math.min(filteredReviews.length, visibleReviews));
+    updateEmptyState(filteredReviews.length);
+    updateLoadMoreButton(filteredReviews.length);
 }
+
+/* SEARCH + FILTER */
 
 function initReviewsSearch() {
     const searchInput = document.getElementById("review-search");
 
     if (!searchInput) return;
 
-    searchInput.addEventListener("input", applyReviewsView);
-
-    const params = new URLSearchParams(window.location.search);
-    const initialSearch = params.get("search") || localStorage.getItem("rateMe_reviewSearch") || "";
-
-    if (initialSearch) {
-        searchInput.value = initialSearch;
-        localStorage.removeItem("rateMe_reviewSearch");
-        applyReviewsView();
-    }
+    searchInput.addEventListener("input", () => {
+        visibleReviews = 6;
+        renderGoogleReviews();
+    });
 }
 
 function initFilterButtons() {
@@ -172,215 +257,179 @@ function initFilterButtons() {
             button.classList.add("active");
             activeFilter = button.textContent.trim();
 
-            applyReviewsView();
+            visibleReviews = 6;
+            renderGoogleReviews();
         });
     });
 }
 
-function matchesFilter(data) {
-    const rating = Number(data.rating);
+function getFilteredReviews() {
+    const searchInput = document.getElementById("review-search");
+    const query = searchInput ? searchInput.value.toLowerCase().trim() : "";
 
-    if (activeFilter === "All") return true;
-    if (activeFilter === "Latest") return data.date.includes("day") || data.date.includes("Today");
-    if (activeFilter === "Top Rated") return rating >= 4.8;
-    if (activeFilter === "Most Popular") return ["Technology", "Shopping", "Travel & Adventure"].includes(data.category);
-    if (activeFilter === "This Week") return !data.date.includes("weeks") && !data.date.includes("month");
+    return googleReviews.filter(review => {
+        const text = `
+            ${review.title}
+            ${review.category}
+            ${review.text}
+            ${review.author}
+            ${review.address}
+        `.toLowerCase();
+
+        const matchesSearch = text.includes(query);
+        const matchesSelectedFilter = matchesFilter(review);
+
+        return matchesSearch && matchesSelectedFilter;
+    });
+}
+
+function matchesFilter(review) {
+    const rating = Number(String(review.rating).replace(",", "."));
+    const reviewsCount = Number(String(review.reviewsCount).replace(/\D/g, ""));
+
+    if (activeFilter === "All") {
+        return true;
+    }
+
+    if (activeFilter === "Latest") {
+        return true;
+    }
+
+    if (activeFilter === "Top Rated") {
+        return rating >= 4.7;
+    }
+
+    if (activeFilter === "Most Popular") {
+        return reviewsCount >= 4000;
+    }
+
+    if (activeFilter === "This Week") {
+        return review.title === "Pegas Terrace & Restaurant" ||
+               review.title === "Divus Restaurant" ||
+               review.title === "Fuior";
+    }
 
     return true;
 }
 
-function applyReviewsView() {
-    const searchInput = document.getElementById("review-search");
-    const emptyReviews = document.getElementById("empty-reviews");
+/* LOAD MORE */
 
-    const query = searchInput ? searchInput.value.toLowerCase().trim() : "";
-    let visibleCount = 0;
+function initLoadMore() {
+    const loadMoreBtn = document.querySelector(".load-more-btn");
 
-    getReviewItems().forEach(item => {
-        const data = getReviewData(item);
+    if (!loadMoreBtn) return;
 
-        const searchText = `
-            ${data.title}
-            ${data.category}
-            ${data.text}
-            ${data.author}
-        `.toLowerCase();
-
-        const isVisible = matchesFilter(data) && searchText.includes(query);
-
-        item.style.display = isVisible ? "" : "none";
-
-        if (isVisible) visibleCount++;
+    loadMoreBtn.addEventListener("click", () => {
+        visibleReviews += 6;
+        renderGoogleReviews();
     });
-
-    if (emptyReviews) {
-        emptyReviews.style.display = visibleCount ? "none" : "block";
-    }
-
-    updateReviewCount();
 }
 
-function updateReviewCount() {
+function updateLoadMoreButton(totalFiltered) {
+    const loadMoreBtn = document.querySelector(".load-more-btn");
+
+    if (!loadMoreBtn) return;
+
+    if (visibleReviews >= totalFiltered) {
+        loadMoreBtn.style.display = "none";
+    } else {
+        loadMoreBtn.style.display = "block";
+        loadMoreBtn.textContent = "Load More Reviews";
+        loadMoreBtn.disabled = false;
+    }
+}
+
+/* COUNT + EMPTY */
+
+function updateReviewCount(total) {
     const reviewCount = document.getElementById("review-count");
 
     if (!reviewCount) return;
 
-    const visibleItems = getReviewItems().filter(item => item.style.display !== "none");
-
-    reviewCount.textContent = `${visibleItems.length} review${visibleItems.length === 1 ? "" : "s"} found`;
+    reviewCount.textContent = `${total} review${total === 1 ? "" : "s"} found`;
 }
 
-// REVIEW CARDS
+function updateEmptyState(total) {
+    const emptyReviews = document.getElementById("empty-reviews");
 
-function initReviewCards() {
-    getReviewItems().forEach(card => {
-        wireReviewCard(card);
-    });
+    if (!emptyReviews) return;
+
+    emptyReviews.style.display = total === 0 ? "block" : "none";
 }
 
-function wireReviewCard(card) {
-    card.addEventListener("click", () => {
-        const data = getReviewData(card);
-        const avatar = card.querySelector(".review-item-author img")?.src || "";
-
-        localStorage.setItem("rateMe_selectedReview", JSON.stringify({
-            ...data,
-            avatar
-        }));
-
-        window.location.href = `review-detail.html?title=${encodeURIComponent(data.title)}`;
-    });
-}
-
-// LOAD MORE
-
-function initLoadMore() {
-    const loadMoreBtn = document.querySelector(".load-more-btn");
-    const reviewGrid = document.querySelector(".all-reviews-grid");
-
-    if (!loadMoreBtn || !reviewGrid) return;
-
-    loadMoreBtn.addEventListener("click", () => {
-        const extraReviews = [
-            {
-                title: "Hidden Gem Cafe",
-                category: "Dining",
-                text: "Cozy place, excellent desserts, and a team that pays attention to small details.",
-                author: "Nora Miles",
-                date: "Today",
-                rating: "4.9"
-            },
-            {
-                title: "Smart Planner App",
-                category: "Technology",
-                text: "A clean app that helped me organize projects and daily habits.",
-                author: "Leo Park",
-                date: "Today",
-                rating: "4.5"
-            },
-            {
-                title: "Weekend Mountain Stay",
-                category: "Travel & Adventure",
-                text: "Beautiful views, quiet rooms, and very friendly hosts.",
-                author: "Irina Costa",
-                date: "Yesterday",
-                rating: "5.0"
-            }
-        ];
-
-        extraReviews.forEach(review => {
-            const card = createReviewCard(review);
-            reviewGrid.appendChild(card);
-            wireReviewCard(card);
-        });
-
-        loadMoreBtn.textContent = "All Reviews Loaded";
-        loadMoreBtn.disabled = true;
-
-        applyReviewsView();
-    });
-}
-
-function createReviewCard(review) {
-    const card = document.createElement("div");
-    card.className = "review-item";
-
-    card.innerHTML = `
-        <div class="review-item-header">
-            <h3 class="review-item-title">${review.title}</h3>
-            <p class="review-item-category">${review.category}</p>
-        </div>
-
-        <div class="review-item-body">
-            <div class="review-item-rating">
-                <span class="review-stars">${createStars(review.rating)}</span>
-                <span>${review.rating}</span>
-            </div>
-
-            <p class="review-item-text">${review.text}</p>
-
-            <div class="review-item-author">
-                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=${encodeURIComponent(review.author)}" alt="Author">
-                <div>
-                    <strong>${review.author}</strong>
-                    <small>${review.date}</small>
-                </div>
-            </div>
-        </div>
-    `;
-
-    return card;
-}
+/* HELPERS */
 
 function createStars(rating) {
-    const value = Math.round(Number(rating));
+    const value = Math.round(Number(String(rating).replace(",", "."))) || 0;
     return "★".repeat(value) + "☆".repeat(5 - value);
 }
 
-// SAVED USER REVIEWS
+function getReviewAuthor(index) {
+    const authors = [
+        "Alexandra",
+        "Michael",
+        "Sophie"
+    ];
 
-function addSavedUserReviews() {
-    const reviewGrid = document.querySelector(".all-reviews-grid");
-
-    if (!reviewGrid) return;
-
-    const savedReviews = JSON.parse(localStorage.getItem("rateMe_reviews") || "[]");
-
-    savedReviews.slice().reverse().forEach(review => {
-        const title = review.subject || "Saved Review";
-
-        const exists = Array.from(document.querySelectorAll(".review-item-title"))
-            .some(item => item.textContent.trim() === title);
-
-        if (exists) return;
-
-        const card = createReviewCard({
-            title,
-            category: review.category || "User Review",
-            text: review.reviewText || review.review || "Saved rating from RateMe.",
-            author: review.userName || "RateMe User",
-            date: "Today",
-            rating: review.rating || "5"
-        });
-
-        reviewGrid.prepend(card);
-        wireReviewCard(card);
-    });
+    return authors[index] || "Google User";
 }
 
-// ===============================
-// NOTIFICATIONS
-// ===============================
+function getReviewAvatar(index) {
+    const avatars = [
+        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop",
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop",
+        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop"
+    ];
+
+    return avatars[index] || avatars[0];
+}
+
+function cleanText(text) {
+    return text ? text.trim() : "";
+}
+
+function parseCSV(csv) {
+    const rows = [];
+    let row = [];
+    let current = "";
+    let insideQuotes = false;
+
+    for (let i = 0; i < csv.length; i++) {
+        const char = csv[i];
+        const next = csv[i + 1];
+
+        if (char === '"' && insideQuotes && next === '"') {
+            current += '"';
+            i++;
+        } else if (char === '"') {
+            insideQuotes = !insideQuotes;
+        } else if (char === "," && !insideQuotes) {
+            row.push(current);
+            current = "";
+        } else if ((char === "\n" || char === "\r") && !insideQuotes) {
+            if (current || row.length) {
+                row.push(current);
+                rows.push(row);
+                row = [];
+                current = "";
+            }
+        } else {
+            current += char;
+        }
+    }
+
+    if (current || row.length) {
+        row.push(current);
+        rows.push(row);
+    }
+
+    return rows;
+}
 
 function showNotification(message) {
-    let toast = document.getElementById("notification-toast");
+    const toast = document.getElementById("notification-toast");
 
-    if (!toast) {
-        toast = document.createElement("div");
-        toast.id = "notification-toast";
-        toast.className = "notification-toast";
-        document.body.appendChild(toast);
-    }
+    if (!toast) return;
 
     toast.textContent = message;
     toast.classList.add("show");
@@ -390,7 +439,45 @@ function showNotification(message) {
     }, 3000);
 }
 
-// GLOBAL FUNCTIONS
+function getReviewTitleByAuthor(author) {
+    const titles = {
+        Alexandra: "Amazing Dining Experience!",
+        Michael: "Great Food and Atmosphere!",
+        Sophie: "Excellent Service!"
+    };
+
+    return titles[author] || "Restaurant Review";
+}
+
+function markHelpful(event, button) {
+    event.stopPropagation();
+
+    const span = button.querySelector("span");
+    let value = Number(span.textContent);
+
+    value++;
+    span.textContent = value;
+
+    button.disabled = true;
+    button.classList.add("liked");
+}
+
+function replyToReview(event) {
+    event.stopPropagation();
+
+    const user = getCurrentUser();
+
+    if (!user) {
+        showNotification("Please login before replying.");
+        openModal("login-modal");
+        return;
+    }
+
+    showNotification("Reply feature will be available soon.");
+}
+
+window.markHelpful = markHelpful;
+window.replyToReview = replyToReview;
 
 window.openModal = openModal;
 window.closeAllModals = closeAllModals;

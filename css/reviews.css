@@ -150,6 +150,7 @@ a{
     padding: 14px 18px;
     border-radius: 12px;
     font-size: 1rem;
+    margin-top: 30px;
 }
 
 .review-search:focus {
@@ -184,8 +185,8 @@ a{
 
 .all-reviews-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
 }
 
 .review-item {
@@ -2162,6 +2163,108 @@ a{
 .btn-primary:hover {
     transform: translateY(-3px);
     box-shadow: 0 15px 40px rgba(99, 102, 241, 0.3);
+}
+
+.all-reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+.review-card {
+    background: linear-gradient(135deg, rgba(26, 31, 58, 0.75), rgba(20, 27, 68, 0.65));
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px;
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 60px rgba(99, 102, 241, 0.25);
+}
+
+.review-card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 28px;
+}
+
+.review-card-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.review-card h3 {
+    color: white;
+    font-size: 24px;
+    line-height: 1.25;
+    margin-bottom: 10px;
+}
+
+.review-card-author {
+    color: var(--text-light);
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.review-card-rating {
+    color: #fbbf24;
+    font-size: 17px;
+}
+
+.review-card-rating span {
+    color: white;
+    margin-left: 6px;
+}
+
+.review-card-text {
+    color: var(--text);
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    flex: 1;
+}
+
+.review-card-actions {
+    display: flex;
+    gap: 14px;
+    margin-top: auto;
+}
+
+.review-card-actions button {
+    padding: 12px 20px;
+    background: rgba(99, 102, 241, 0.22);
+    border: 1px solid rgba(142, 143, 214, 0.6);
+    color: white;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.review-card-actions button:hover {
+    background: var(--primary);
+}
+
+.review-card-actions button.liked {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+@media (max-width: 1000px) {
+    .all-reviews-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Responsive */

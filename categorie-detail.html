@@ -59,6 +59,17 @@
             </div>
         </div>
 
+        <div id="restaurant-reviews-section" class="detail-section-block restaurant-reviews-section">
+            <h3 id="restaurant-name">Restaurant Reviews</h3>
+
+            <div class="restaurant-meta">
+                <p id="restaurant-rating"></p>
+                <p id="restaurant-address"></p>
+            </div>
+
+            <div id="restaurant-reviews-grid" class="insight-grid"></div>
+        </div>
+
         <div class="category-tabs">
             <button class="tab-btn active" data-tab="top-products">Top Restaurants</button>
             <button class="tab-btn" data-tab="recent-reviews">Recent Reviews</button>
@@ -69,7 +80,7 @@
         <div class="tab-content">
 
             <div id="top-products" class="tab-pane active">
-                <div class="products-grid">
+                <div class="products-grid" id="restaurants-container">
 
                     <div class="product-card">
                         <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=500&h=300&fit=crop" alt="Pegas Terrace" loading="lazy">
@@ -152,9 +163,9 @@
                     </div>
 
                     <div class="product-card">
-                        <img src="https://images.unsplash.com/photo-1515669097368-22e68427d265?w=500&h=300&fit=crop" alt="Vatra Neamului" loading="lazy">
+                        <img src="https://popasuldacilor.md/storage/public/posters/RJ8TsJN47yWs1xD0G6OrBn87Mv59Rl6arGu1k2i9.jpg?w=500&h=300&fit=crop" alt="Popasul Dacilor" loading="lazy">
                         <div class="product-info">
-                            <h3>Vatra Neamului</h3>
+                            <h3>Popasul Dacilor</h3>
                             <div class="product-rating">★★★★★ (4,020 reviews)</div>
                             <p class="product-desc">Famous traditional restaurant with Moldovan folklore style, homemade dishes and cultural decor.</p>
                             <button class="btn-review">View Reviews</button>
@@ -162,19 +173,19 @@
                     </div>
 
                     <div class="product-card">
-                        <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=500&h=300&fit=crop" alt="Propaganda Cafe" loading="lazy">
+                        <img src="https://www.fest.md/files/places/12/image_1263_2_large.jpg?w=500&h=300&fit=crop" alt="Basilico" loading="lazy">
                         <div class="product-info">
-                            <h3>Propaganda Café</h3>
+                            <h3>Basilico</h3>
                             <div class="product-rating">★★★★★ (4,250 reviews)</div>
-                            <p class="product-desc">Trendy café with artistic interior, quality coffee, modern European menu and creative vibe.</p>
+                            <p class="product-desc">Elegant Italian restaurant known for authentic pasta, wood-fired pizza, refined atmosphere and premium Mediterranean cuisine.</p>
                             <button class="btn-review">View Reviews</button>
                         </div>
                     </div>
 
                     <div class="product-card">
-                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=500&h=300&fit=crop" alt="Carne Grill" loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=500&h=300&fit=crop" alt="Steak House" loading="lazy">
                         <div class="product-info">
-                            <h3>Carne Grill & Wine</h3>
+                            <h3>Steak House</h3>
                             <div class="product-rating">★★★★★ (4,610 reviews)</div>
                             <p class="product-desc">Premium steakhouse with aged meat selection, wine pairing and elegant interior.</p>
                             <button class="btn-review">View Reviews</button>
@@ -182,11 +193,11 @@
                     </div>
 
                     <div class="product-card">
-                        <img src="https://images.unsplash.com/photo-1555992336-03a23c7b20ee?w=500&h=300&fit=crop" alt="Smokehouse" loading="lazy">
+                        <img src="https://gurmand.md/wp-content/uploads/2016/09/12065652_971727926217868_7661216744736519306_n.jpg?w=500&h=300&fit=crop" alt="Smokehouse" loading="lazy">
                         <div class="product-info">
-                            <h3>Smokehouse</h3>
+                            <h3>Brother's Pub</h3>
                             <div class="product-rating">★★★★★ (4,450 reviews)</div>
-                            <p class="product-desc">American-style restaurant famous for burgers, ribs, smoked BBQ dishes and casual atmosphere.</p>
+                            <p class="product-desc">Popular pub and restaurant known for craft beer, grilled dishes, live music and a warm friendly atmosphere.</p>
                             <button class="btn-review">View Reviews</button>
                         </div>
                     </div>
@@ -222,9 +233,9 @@
                     </div>
 
                     <div class="product-card">
-                        <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=500&h=300&fit=crop" alt="Madam Wong" loading="lazy">
+                        <img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAFScHtqa7k3Yac56DJsTsgRPoja2kM93RoZdqh8H-ErvPgOjxIQyNV0xyMp67YT0JWd9_6OtoocBI_PNtyb1AjRz2Ll7pfbR3lxZxRrT3abt9-4wLGngnhA-5jw98Jug3lsXSPH=s600-w500-h300-c" alt="Madam Wong" loading="lazy">
                         <div class="product-info">
-                            <h3>Madam Wong</h3>
+                            <h3>ChiBox</h3>
                             <div class="product-rating">★★★★★ (4,540 reviews)</div>
                             <p class="product-desc">Asian fusion restaurant with sushi, noodles, cocktails and modern urban atmosphere.</p>
                             <button class="btn-review">View Reviews</button>
@@ -232,11 +243,11 @@
                     </div>
 
                     <div class="product-card">
-                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=500&h=300&fit=crop" alt="Brooklyn Steakhouse" loading="lazy">
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/29/e8/00/3f/rib-eye.jpg?w=500&h=300&fit=crop" alt="Buffalo Steak House" loading="lazy">
                         <div class="product-info">
-                            <h3>Brooklyn Steakhouse</h3>
+                            <h3>Buffalo Steak House</h3>
                             <div class="product-rating">★★★★★ (4,410 reviews)</div>
-                            <p class="product-desc">American-style steakhouse with burgers, grilled meat and premium lounge atmosphere.</p>
+                            <p class="product-desc"> Premium steakhouse in Chișinău known for juicy steaks, grilled specialties, elegant interior and high-quality dining experience.</p>
                             <button class="btn-review">View Reviews</button>
                         </div>
                     </div>
@@ -282,7 +293,7 @@
                     </div>
 
                     <div class="product-card">
-                        <img src="https://images.unsplash.com/photo-1555992336-03a23c7b20ee?w=500&h=300&fit=crop" alt="Osho Bar" loading="lazy">
+                        <img src="https://static.tildacdn.one/tild3437-6661-4930-a161-366639666630/oshointerior3.jpg?w=500&h=300&fit=crop" alt="Osho Bar" loading="lazy">
                         <div class="product-info">
                             <h3>Osho Bar & Kitchen</h3>
                             <div class="product-rating">★★★★★ (4,760 reviews)</div>
@@ -341,6 +352,16 @@
                         </div>
                     </div>
 
+                    <div class="product-card">
+                        <img src="https://avatars.mds.yandex.net/get-altay/18151954/2a0000019cc834035ac84dfce6141c55fe1f/orig?w=500&h=300&fit=crop" alt="Gastrobar" loading="lazy">
+                        <div class="product-info">
+                            <h3>GioGio</h3>
+                            <div class="product-rating">★★★★★ (4,356 reviews)</div>
+                            <p class="product-desc">Elegant restaurant in Chișinău known for refined European cuisine, stylish interior, premium service and sophisticated atmosphere.</p>
+                            <button class="btn-review">View Reviews</button>
+                        </div>
+                    </div>
+
                 </div>
 
                 <div class="load-more-container">
@@ -349,23 +370,15 @@
             </div>
 
             <div id="recent-reviews" class="tab-pane">
-                <div class="reviews-list">
-                    <div class="review-item">
-                        <div class="review-avatar">
-                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop" alt="User">
-                        </div>
-                        <div class="review-content">
-                            <h4>Amazing Dining Experience!</h4>
-                            <p class="review-author">By Alexandra • 2 days ago</p>
-                            <div class="rating">★★★★★ 5.0</div>
-                            <p class="review-body">The food, service and atmosphere were excellent. A great place for dinner in Chișinău.</p>
-                            <div class="review-footer">
-                                <button class="btn-helpful">👍 Helpful (234)</button>
-                                <button class="btn-reply">💬 Reply</button>
-                            </div>
-                        </div>
-                    </div>
+
+                <div class="reviews-list"></div>
+
+                <div class="load-more-container">
+                    <button id="load-more-reviews-btn" class="load-more-btn">
+                        Show More
+                    </button>
                 </div>
+
             </div>
 
             <div id="guides" class="tab-pane">
@@ -373,15 +386,56 @@
                     <div class="guide-card">
                         <h3>How to Choose a Good Restaurant</h3>
                         <p>Check recent reviews, menu quality, atmosphere, location and service before choosing.</p>
-                        <button class="btn-read">Read Guide →</button>
+                        <button 
+                                class="btn-read guide-btn"
+                                data-title="How to Choose a Good Restaurant"
+                                data-content="Check restaurant ratings, read recent reviews, analyze customer photos and compare service quality before choosing a place to eat. Restaurants with many recent positive reviews are usually more reliable and offer better customer experiences.">
+                                Read Guide →
+                            </button>
                     </div>
 
                     <div class="guide-card">
                         <h3>Best Places for Dinner</h3>
                         <p>Compare restaurants by cuisine type, rating, popularity and real customer experiences.</p>
-                        <button class="btn-read">Read Guide →</button>
+                        <button 
+                                class="btn-read guide-btn"
+                                data-title="Best Places for Dinner"
+                                data-content="The best restaurants for dinner usually combine atmosphere, quality food and excellent service. Compare ratings, customer reviews and menu variety to find the perfect place for evening dining experiences.">
+                                Read Guide →
+                            </button>
                     </div>
-                </div>
+
+                     <div class="guide-card">
+                            <h3>How to Compare Restaurant Reviews</h3>
+                            <p>Look at rating, number of reviews, recent feedback and repeated customer opinions.</p>
+                            <button 
+                                class="btn-read guide-btn"
+                                data-title="How to Compare Restaurant Reviews"
+                                data-content="When comparing reviews, focus on repeated opinions from multiple users. Look at service speed, food quality, cleanliness and overall atmosphere. Recent reviews are usually more accurate than old ones.">
+                                Read Guide →
+                            </button>
+                        </div>
+
+                        <div class="guide-card">
+                            <h3>What Makes a Restaurant Reliable?</h3>
+                            <p>A reliable restaurant usually has consistent service, clean atmosphere and many recent reviews.</p>
+                            <button 
+                                class="btn-read guide-btn"
+                                data-title="What Makes a Restaurant Reliable?"
+                                data-content="Reliable restaurants maintain consistent food quality, professional staff and positive customer experiences over time. A large number of authentic reviews often indicates trust and popularity.">
+                                Read Guide →
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <div class="load-more-container">
+                        <button id="load-more-guides-btn" class="load-more-btn">
+                            Show More
+                        </button>
+                    </div>
+
+                
             </div>
 
             <div id="trending" class="tab-pane">
@@ -589,6 +643,20 @@
             <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 15px;">No spam, just amazing reviews!</p>
         </div>
     </div>
+
+    <div id="guide-modal" class="guide-modal">
+    <div class="guide-modal-content">
+
+        <button id="close-guide-modal" class="close-guide-modal">
+            ×
+        </button>
+
+        <h2 id="guide-modal-title"></h2>
+
+        <p id="guide-modal-text"></p>
+
+    </div>
+</div>
 
     <!-- Notification Toast -->
     <div id="notification-toast" class="notification-toast"></div>
