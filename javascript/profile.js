@@ -1,58 +1,9 @@
-// ===============================
-// RateMe - profile.js
-// Fără GSAP
-// ===============================
-
 document.addEventListener("DOMContentLoaded", () => {
-    createLoginModal();
+    ensureEditProfileModalExists();
     initLoginSystem();
-    loadUserProfile();
+    initProfileSystem();
     initRevealOnScroll();
-    initProfileInteractions();
 });
-
-// ===============================
-// LOGIN MODAL
-// ===============================
-
-function createLoginModal() {
-    if (document.getElementById("login-modal")) return;
-
-    document.body.insertAdjacentHTML("beforeend", `
-        <div id="modal-overlay" class="modal-overlay"></div>
-
-        <div id="login-modal" class="modal">
-            <div class="modal-content">
-                <button type="button" class="modal-close">&times;</button>
-
-                <h2>Login / Register</h2>
-
-                <form id="login-form">
-                    <div id="login-form-container">
-                        <div class="form-group">
-                            <label>Name:</label>
-                            <input type="text" id="user-name" placeholder="Enter your name..." required>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Email:</label>
-                            <input type="email" id="user-email" placeholder="Enter your email..." required>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Password:</label>
-                            <input type="password" id="user-password" placeholder="Create a password..." required>
-                        </div>
-
-                        <button type="submit" class="modal-btn">Save Login</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-        <div id="notification-toast" class="notification-toast"></div>
-    `);
-}
 
 function openModal(modalId) {
     const modal = document.getElementById(modalId);
@@ -71,36 +22,23 @@ function closeAllModals() {
     if (overlay) overlay.classList.remove("active");
 }
 
+function getCurrentUser() {
+    return JSON.parse(localStorage.getItem("rateMe_user") || "null");
+}
+
+function saveCurrentUser(user) {
+    localStorage.setItem("rateMe_user", JSON.stringify(user));
+}
+
 function initLoginSystem() {
     const navLoginBtn = document.getElementById("nav-login-btn");
     const loginForm = document.getElementById("login-form");
-    const overlay = document.getElementById("modal-overlay");
 
     if (navLoginBtn) {
         navLoginBtn.addEventListener("click", () => {
             openModal("login-modal");
         });
     }
-
-    document.addEventListener("click", event => {
-        if (event.target.closest(".modal-close")) {
-            closeAllModals();
-        }
-
-        if (event.target === overlay) {
-            closeAllModals();
-        }
-
-        if (event.target.closest(".go-login-btn")) {
-            openModal("login-modal");
-        }
-
-        if (event.target.closest(".logout-profile-btn")) {
-            localStorage.removeItem("rateMe_user");
-            loadUserProfile();
-            showNotification("You have been logged out.");
-        }
-    });
 
     if (loginForm) {
         loginForm.addEventListener("submit", event => {
@@ -115,34 +53,86 @@ function initLoginSystem() {
                 return;
             }
 
-            if (!email.includes("@")) {
-                showNotification("Please enter a valid email.");
-                return;
-            }
-
             const user = {
                 name,
                 email,
+                bio: "Passionate about discovering and sharing the best experiences.",
+                title: "Reviewer",
                 joinedDate: new Date().toISOString()
             };
 
-            localStorage.setItem("rateMe_user", JSON.stringify(user));
-
+            saveCurrentUser(user);
             closeAllModals();
             loadUserProfile();
-            initRevealOnScroll();
+            showNotification("Login saved successfully.");
+        });
+    }
 
-            showNotification(`Welcome, ${name}!`);
+    document.addEventListener("click", event => {
+        if (event.target.closest(".modal-close")) {
+            closeAllModals();
+        }
+
+        if (event.target.id === "modal-overlay") {
+            closeAllModals();
+        }
+
+        if (event.target.closest(".go-login-btn")) {
+            openModal("login-modal");
+        }
+
+        if (event.target.closest(".logout-profile-btn")) {
+            localStorage.removeItem("rateMe_user");
+            loadUserProfile();
+            showNotification("You have been logged out.");
+        }
+    });
+}
+
+function initProfileSystem() {
+    loadUserProfile();
+
+    document.addEventListener("click", event => {
+        const editBtn = event.target.closest(".edit-profile-btn");
+
+        if (editBtn) {
+            event.preventDefault();
+            openEditProfileModal();
+        }
+    });
+
+    const editForm = document.getElementById("edit-profile-form");
+
+    if (editForm) {
+        editForm.addEventListener("submit", event => {
+            event.preventDefault();
+
+            const user = getCurrentUser() || {};
+
+            user.name = document.getElementById("edit-profile-name").value.trim();
+            user.email = document.getElementById("edit-profile-email").value.trim();
+            user.bio = document.getElementById("edit-profile-bio").value.trim();
+            user.title = document.getElementById("edit-profile-title").value.trim();
+
+            if (!user.name || !user.email) {
+                showNotification("Please complete all required fields.");
+                return;
+            }
+
+            if (!user.joinedDate) {
+                user.joinedDate = new Date().toISOString();
+            }
+
+            saveCurrentUser(user);
+            closeAllModals();
+            loadUserProfile();
+            showNotification("Profile updated successfully.");
         });
     }
 }
 
-// ===============================
-// PROFILE
-// ===============================
-
 function loadUserProfile() {
-    const user = JSON.parse(localStorage.getItem("rateMe_user") || "null");
+    const user = getCurrentUser();
     const reviews = JSON.parse(localStorage.getItem("rateMe_reviews") || "[]");
 
     const header = document.querySelector(".profile-header");
@@ -153,7 +143,7 @@ function loadUserProfile() {
     if (!user) {
         if (profileContent) profileContent.style.display = "none";
         if (reviewsSection) reviewsSection.style.display = "none";
-        if (navLoginBtn) navLoginBtn.textContent = "Login";
+        if (navLoginBtn) navLoginBtn.textContent = "Conectare";
 
         if (header) {
             header.innerHTML = `
@@ -172,12 +162,13 @@ function loadUserProfile() {
             `;
         }
 
+        refreshRevealOnScroll();
         return;
     }
 
     if (profileContent) profileContent.style.display = "";
     if (reviewsSection) reviewsSection.style.display = "";
-    if (navLoginBtn) navLoginBtn.textContent = `${user.name}`;
+    if (navLoginBtn) navLoginBtn.textContent = user.name;
 
     const userReviews = reviews.filter(review =>
         review.userName === user.name || review.user === user.name
@@ -189,13 +180,22 @@ function loadUserProfile() {
 
     if (header) {
         header.innerHTML = `
-            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=${encodeURIComponent(user.name)}" alt="Profile" class="profile-avatar">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=${encodeURIComponent(user.name)}" 
+                 alt="Profile" 
+                 class="profile-avatar">
 
             <h1 class="profile-name">${user.name}</h1>
-            <p class="profile-username">@${user.name.toLowerCase().replace(/\s/g, "")}</p>
+
+            <p class="profile-username">
+                @${user.name.toLowerCase().replace(/\s/g, "")}
+            </p>
 
             <p style="color: var(--text-light); margin: 10px 0 0 0;">
-                Joined on ${new Date(user.joinedDate).toLocaleDateString()}
+                ${user.bio || "RateMe user"}
+            </p>
+
+            <p style="color: var(--primary); margin-top: 8px; font-weight: 600;">
+                ${user.title || "Reviewer"}
             </p>
 
             <div class="profile-stats">
@@ -215,70 +215,83 @@ function loadUserProfile() {
                 </div>
             </div>
 
-            <button class="edit-profile-btn">
+            <button type="button" class="edit-profile-btn">
                 <i class="fas fa-edit"></i> Edit Profile
             </button>
 
-            <button class="logout-profile-btn">
+            <button type="button" class="logout-profile-btn">
                 Logout
             </button>
         `;
     }
 
-    if (reviewsSection) {
-        let reviewsHTML = `
-            <h3 class="profile-section-title">
-                <i class="fas fa-star"></i> My Reviews
-            </h3>
-        `;
-
-        if (userReviews.length > 0) {
-            userReviews.slice(0, 5).forEach(review => {
-                const title = review.subject || "Quick rating";
-                const body = review.reviewText || review.review || "Saved review from RateMe.";
-                const date = review.timestamp || review.date || new Date().toISOString();
-
-                reviewsHTML += `
-                    <div class="profile-review">
-                        <h4 class="profile-review-title">
-                            ${"⭐".repeat(Number(review.rating || 0))} ${title}
-                        </h4>
-
-                        <p class="profile-review-text">
-                            ${body.substring(0, 140)}${body.length > 140 ? "..." : ""}
-                        </p>
-
-                        <div class="profile-review-date">
-                            ${new Date(date).toLocaleDateString()}
-                        </div>
-                    </div>
-                `;
-            });
-        } else {
-            reviewsHTML += `
-                <div class="profile-review">
-                    <h4 class="profile-review-title">No reviews yet</h4>
-                    <p class="profile-review-text">
-                        Your saved reviews will appear here after you submit them.
-                    </p>
-                </div>
-            `;
-        }
-
-        reviewsSection.innerHTML = reviewsHTML;
-    }
+    refreshRevealOnScroll();
 }
 
-// ===============================
-// REVEAL ON SCROLL
-// ===============================
+function openEditProfileModal() {
+    const user = getCurrentUser();
+
+    if (!user) {
+        openModal("login-modal");
+        return;
+    }
+
+    document.getElementById("edit-profile-name").value = user.name || "";
+    document.getElementById("edit-profile-email").value = user.email || "";
+    document.getElementById("edit-profile-bio").value = user.bio || "";
+    document.getElementById("edit-profile-title").value = user.title || "";
+
+    openModal("edit-profile-modal");
+}
+
+function ensureEditProfileModalExists() {
+    if (document.getElementById("edit-profile-modal")) return;
+
+    document.body.insertAdjacentHTML("beforeend", `
+        <div id="edit-profile-modal" class="modal">
+            <div class="modal-content">
+                <button type="button" class="modal-close">&times;</button>
+
+                <h2>Edit Profile</h2>
+
+                <form id="edit-profile-form">
+                    <div class="form-group">
+                        <label>Full Name:</label>
+                        <input type="text" id="edit-profile-name" placeholder="Enter your name..." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email:</label>
+                        <input type="email" id="edit-profile-email" placeholder="Enter your email..." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Bio:</label>
+                        <textarea id="edit-profile-bio" placeholder="Tell us about yourself..." rows="4"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Profession/Title:</label>
+                        <input type="text" id="edit-profile-title" placeholder="e.g., Tech Enthusiast..." required>
+                    </div>
+
+                    <button type="submit" class="modal-btn">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    `);
+}
 
 function initRevealOnScroll() {
+    refreshRevealOnScroll();
+}
+
+function refreshRevealOnScroll() {
     const elements = document.querySelectorAll(
         ".profile-header, .profile-section, .profile-review"
     );
 
-    if (elements.length === 0) return;
+    if (!elements.length) return;
 
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -292,33 +305,10 @@ function initRevealOnScroll() {
     });
 
     elements.forEach(element => {
+        element.classList.remove("visible");
         observer.observe(element);
     });
 }
-
-// ===============================
-// INTERACTIONS
-// ===============================
-
-function initProfileInteractions() {
-    document.addEventListener("click", event => {
-        const editBtn = event.target.closest(".edit-profile-btn");
-        const review = event.target.closest(".profile-review");
-
-        if (editBtn) {
-            showNotification("Edit Profile mode activated!");
-        }
-
-        if (review) {
-            const title = review.querySelector(".profile-review-title")?.textContent || "Review";
-            showNotification(`Viewing: ${title.substring(0, 30)}...`);
-        }
-    });
-}
-
-// ===============================
-// NOTIFICATION
-// ===============================
 
 function showNotification(message) {
     let toast = document.getElementById("notification-toast");
@@ -338,9 +328,6 @@ function showNotification(message) {
     }, 3000);
 }
 
-// ===============================
-// GLOBAL
-// ===============================
-
 window.openModal = openModal;
 window.closeAllModals = closeAllModals;
+window.openEditProfileModal = openEditProfileModal;
