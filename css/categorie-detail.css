@@ -97,6 +97,14 @@ a {
     width: 100%;
 }
 
+.nav-link.active {
+    color: var(--primary);
+}
+
+.nav-link.active::after {
+    width: 100%;
+}
+
 .login-btn {
     padding: 10px 20px;
     border: none;

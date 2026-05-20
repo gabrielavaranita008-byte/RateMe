@@ -118,6 +118,14 @@ a{
     padding: 40px 20px;
 }
 
+.nav-link.active {
+    color: var(--primary);
+}
+
+.nav-link.active::after {
+    width: 100%;
+}
+
 .about-hero {
     text-align: center;
     margin-bottom: 60px;
