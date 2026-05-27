@@ -1042,3 +1042,270 @@ a {
     margin-top: auto;
     align-self: flex-start;
 }
+
+/* RESPONSIVE */
+
+@media (max-width: 1200px) {
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .category-header {
+        padding: 30px;
+    }
+
+    .guide-modal-content {
+        padding: 35px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        position: relative;
+    }
+
+    .nav-container {
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .nav-menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+    }
+
+    .category-detail-section {
+        padding: 40px 16px;
+    }
+
+    .category-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 26px;
+    }
+
+    .category-icon {
+        min-width: auto;
+        font-size: 52px;
+    }
+
+    .category-info h1 {
+        font-size: 30px;
+    }
+
+    .category-info p {
+        font-size: 16px;
+    }
+
+    .category-tabs {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 8px;
+    }
+
+    .tab-btn {
+        white-space: nowrap;
+    }
+
+    .products-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .product-card img {
+        height: 240px;
+    }
+
+    .review-item {
+        flex-direction: column;
+    }
+
+    .review-avatar img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .review-footer {
+        flex-wrap: wrap;
+    }
+
+    .guides-grid,
+    .insight-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .trending-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .trend-number {
+        width: auto;
+    }
+
+    .category-cta {
+        padding: 30px 24px;
+    }
+
+    .category-cta h2 {
+        font-size: 26px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .modal-content,
+    .guide-modal-content {
+        width: 95%;
+        padding: 28px 22px;
+    }
+
+    .guide-modal-content h2 {
+        font-size: 28px;
+    }
+
+    .guide-modal-content p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 14px;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
+    .nav-menu {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .login-btn {
+        width: 100%;
+    }
+
+    .category-detail-section {
+        padding: 30px 12px;
+    }
+
+    .back-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .category-header {
+        padding: 20px;
+        border-radius: 18px;
+    }
+
+    .category-info h1 {
+        font-size: 24px;
+    }
+
+    .category-info p {
+        font-size: 15px;
+    }
+
+    .category-stats {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .tab-btn {
+        padding: 12px 18px;
+        font-size: 14px;
+    }
+
+    .product-card {
+        border-radius: 16px;
+    }
+
+    .product-card img {
+        height: 210px;
+    }
+
+    .product-card h3 {
+        font-size: 18px;
+    }
+
+    .product-desc {
+        font-size: 14px;
+    }
+
+    .btn-review {
+        width: calc(100% - 28px);
+        margin: auto 14px 14px;
+    }
+
+    .review-item {
+        padding: 18px;
+    }
+
+    .review-content h4 {
+        font-size: 18px;
+    }
+
+    .review-body {
+        font-size: 14px;
+    }
+
+    .detail-section-block {
+        padding: 22px 18px;
+    }
+
+    .detail-section-block h3 {
+        font-size: 22px;
+    }
+
+    .guide-card,
+    .insight-card {
+        padding: 20px;
+    }
+
+    .guide-modal-content {
+        padding: 24px 18px;
+        border-radius: 20px;
+    }
+
+    .guide-modal-content h2 {
+        font-size: 24px;
+    }
+
+    .close-guide-modal {
+        width: 38px;
+        height: 38px;
+        font-size: 22px;
+    }
+
+    .notification-toast {
+        right: 12px;
+        left: 12px;
+        bottom: 20px;
+        max-width: none;
+    }
+
+    .footer {
+        padding: 35px 0 18px;
+    }
+}
